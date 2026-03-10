@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Réservation – Le Gandhi | Restaurant Indien à Toulouse</title>
+    <meta name="description"
+        content="Réservez votre table au restaurant Le Gandhi à Toulouse. Contactez-nous au 05 61 99 21 03. 39 Rue de l'Industrie, 31000 Toulouse.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="nav-logo"><img src="Logo.png" alt="Le Gandhi"></a>
+                <ul class="nav-links">
+                    <li><a href="index.html" data-i18n="navHome">Accueil</a></li>
+                    <li><a href="menu.html" data-i18n="navMenu">Menu</a></li>
+                    <li><a href="gallery.html" data-i18n="navGallery">Galerie</a></li>
+                    <li><a href="about.html" data-i18n="navAbout">À Propos</a></li>
+                    <li><a href="contact.html" class="active" data-i18n="navContact">Contact</a></li>
+                </ul>
+                <div class="nav-right">
+                    <div class="nav-social">
+                        <a href="https://www.instagram.com/legandhi.toulouse/" target="_blank" rel="noopener"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/legandhi.toulouse/" target="_blank" rel="noopener"
+                            aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                    <div class="lang-toggle">
+                        <button class="lang-btn active" data-lang="fr">FR</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    <a href="contact.html" class="btn btn-primary btn-sm" data-i18n="navReserve">Réserver</a>
+                </div>
+                <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="container">
+            <span class="section-label"><i class="fas fa-envelope"></i></span>
+            <h1 class="section-title" data-i18n="contactPageTitle">Contact & Réservation</h1>
+            <p class="section-desc" data-i18n="contactPageDesc">Réservez votre table ou contactez-nous pour toute
+                question.</p>
+        </div>
+    </section>
+
+    <!-- CONTACT CONTENT -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="contact-grid">
+
+                <!-- Reservation Form -->
+                <div class="reveal">
+                    <h2 style="font-size:1.6rem; color:var(--color-cream); margin-bottom:28px;"
+                        data-i18n="contactFormTitle">Réserver une Table</h2>
+                    <form id="reservationForm" onsubmit="handleReservationWhatsApp(event)">
+                        <div class="form-group">
+                            <label class="form-label" data-i18n="contactFormName">Nom complet</label>
+                            <input type="text" id="resName" class="form-input" required>
+                        </div>
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+                            <div class="form-group">
+                                <label class="form-label" data-i18n="contactFormEmail">Email</label>
+                                <input type="email" id="resEmail" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" data-i18n="contactFormPhone">Téléphone</label>
+                                <input type="tel" id="resPhone" class="form-input">
+                            </div>
+                        </div>
+                        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;">
+                            <div class="form-group">
+                                <label class="form-label" data-i18n="contactFormDate">Date</label>
+                                <input type="date" id="resDate" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" data-i18n="contactFormTime">Heure</label>
+                                <input type="time" id="resTime" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" data-i18n="contactFormGuests">Nombre de convives</label>
+                                <select id="resGuests" class="form-select" required>
+                                    <option value="1">1 personne</option>
+                                    <option value="2" selected>2 personnes</option>
+                                    <option value="3">3 personnes</option>
+                                    <option value="4">4 personnes</option>
+                                    <option value="5">5 personnes</option>
+                                    <option value="6">6+ personnes</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" data-i18n="contactFormMessage">Message (optionnel)</label>
+                            <textarea id="resMessage" class="form-textarea"></textarea>
+                        </div>
+                        <button type="submit" id="resSubmitBtn" class="btn btn-primary" data-i18n="contactFormSubmit">
+                            <i class="fab fa-whatsapp" style="margin-right:8px;"></i>Réserver via WhatsApp
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="reveal reveal-delay-2">
+                    <h2 style="font-size:1.6rem; color:var(--color-cream); margin-bottom:28px;"
+                        data-i18n="contactInfoTitle">Informations</h2>
+
+                    <div class="location-info" style="margin-bottom:32px;">
+                        <div class="location-item">
+                            <div class="location-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="location-text">
+                                <h4 data-i18n="locationAddress">Adresse</h4>
+                                <p data-i18n="locationAddressVal">39 Rue de l'Industrie, 31000 Toulouse</p>
+                            </div>
+                        </div>
+                        <div class="location-item">
+                            <div class="location-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div class="location-text">
+                                <h4 data-i18n="locationPhone">Téléphone</h4>
+                                <p data-i18n="locationPhoneVal">05 61 99 21 03</p>
+                            </div>
+                        </div>
+                        <div class="location-item">
+                            <div class="location-icon"><i class="fas fa-clock"></i></div>
+                            <div class="location-text">
+                                <h4 data-i18n="locationHours">Horaires</h4>
+                                <p data-i18n="locationHoursVal">Lun - Dim: 12h00-14h30 / 19h00-23h00</p>
+                            </div>
+                        </div>
+                        <div class="location-item">
+                            <div class="location-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="location-text">
+                                <h4>Email</h4>
+                                <p>contact@legandhi-toulouse.fr</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social -->
+                    <div style="margin-bottom:32px;">
+                        <div class="footer-social" style="gap:16px;">
+                            <a href="https://www.instagram.com/legandhi.toulouse/" target="_blank" rel="noopener"
+                                style="width:48px;height:48px;font-size:1.2rem;"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/legandhi.toulouse/" target="_blank" rel="noopener"
+                                style="width:48px;height:48px;font-size:1.2rem;"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" style="width:48px;height:48px;font-size:1.2rem;"><i
+                                    class="fab fa-tripadvisor"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Map -->
+                    <div class="location-map">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2889.8!2d1.4536!3d43.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDPCsDM2JzAwLjAiTiAxwrAyNycxMi45IkU!5e0!3m2!1sfr!2sfr!4v1234567890"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="nav-logo">Le Gandhi</a>
+                    <p data-i18n="footerDesc">L'essence authentique de l'héritage indien à Toulouse.</p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/legandhi.toulouse/" target="_blank" rel="noopener"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/legandhi.toulouse/" target="_blank" rel="noopener"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3 data-i18n="footerLinks">Liens Rapides</h3>
+                    <ul>
+                        <li><a href="menu.html" data-i18n="footerMenu">Notre Menu</a></li>
+                        <li><a href="contact.html" data-i18n="footerReservation">Réservations</a></li>
+                        <li><a href="gallery.html" data-i18n="footerGallery">Galerie Photos</a></li>
+                        <li><a href="about.html" data-i18n="footerEvents">À Propos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 data-i18n="footerContact">Contact</h3>
+                    <p>39 Rue de l'Industrie, 31000 Toulouse</p>
+                    <p>05 61 99 21 03</p>
+                    <p>contact@legandhi-toulouse.fr</p>
+                </div>
+                <div class="footer-col">
+                    <h3 data-i18n="footerNewsletter">Newsletter</h3>
+                    <p data-i18n="footerNewsletterDesc">Abonnez-vous pour recevoir nos offres spéciales.</p>
+                    <form class="newsletter-form" onsubmit="event.preventDefault();"><input type="email"
+                            class="newsletter-input" placeholder="Votre email"
+                            data-i18n="footerNewsletterPlaceholder"><button type="submit" class="btn btn-gold btn-sm"
+                            data-i18n="footerNewsletterBtn">OK</button></form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footerCopyright">© 2025 Le Gandhi Toulouse. Tous droits réservés.</p>
+                <div class="footer-legal">
+                    <a href="#" data-i18n="footerLegal">Mentions Légales</a>
+                    <a href="#" data-i18n="footerPrivacy">Confidentialité</a>
+                    <a href="#" data-i18n="footerCookies">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

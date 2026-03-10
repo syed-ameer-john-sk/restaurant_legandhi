@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu – Le Gandhi | Restaurant Indien à Toulouse</title>
+    <meta name="description"
+        content="Découvrez le menu du restaurant Le Gandhi à Toulouse. Entrées, Tandoori, Curries, Biryani, plats végétariens, desserts et boissons.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="nav-logo"><img src="Logo.png" alt="Le Gandhi"></a>
+                <ul class="nav-links">
+                    <li><a href="index.html" data-i18n="navHome">Accueil</a></li>
+                    <li><a href="menu.html" class="active" data-i18n="navMenu">Menu</a></li>
+                    <li><a href="gallery.html" data-i18n="navGallery">Galerie</a></li>
+                    <li><a href="about.html" data-i18n="navAbout">À Propos</a></li>
+                    <li><a href="contact.html" data-i18n="navContact">Contact</a></li>
+                </ul>
+                <div class="nav-right">
+                    <div class="nav-social">
+                        <a href="https://www.instagram.com/legandhi.toulouse/" target="_blank" rel="noopener"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/legandhi.toulouse/" target="_blank" rel="noopener"
+                            aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                    <div class="lang-toggle">
+                        <button class="lang-btn active" data-lang="fr">FR</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    <a href="contact.html" class="btn btn-primary btn-sm" data-i18n="navReserve">Réserver</a>
+                </div>
+                <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="container">
+            <span class="section-label" data-i18n="menuPreviewLabel">Notre Carte</span>
+            <h1 class="section-title" data-i18n="menuPageTitle">Notre Menu</h1>
+            <p class="section-desc" data-i18n="menuPageDesc">Explorez la diversité des saveurs indiennes, des entrées
+                classiques aux desserts exotiques.</p>
+        </div>
+    </section>
+
+    <!-- MENU CONTENT -->
+    <section class="section section-dark">
+        <div class="container">
+
+            <!-- Entrées -->
+            <div class="menu-category reveal">
+                <h2 class="menu-category-title" data-i18n="menuEntrees">Entrées</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Samosa (2 pcs)</h4>
+                            <p>Beignets croustillants farcis aux pommes de terre épicées</p>
+                        </div>
+                        <span class="menu-item-price">6,50 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Pakora</h4>
+                            <p>Beignets de légumes à la farine de pois chiche</p>
+                        </div>
+                        <span class="menu-item-price">7,00 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Soupe de Lentilles</h4>
+                            <p>Soupe crémeuse de lentilles corail aux épices</p>
+                        </div>
+                        <span class="menu-item-price">6,00 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Aloo Tikki</h4>
+                            <p>Galettes de pommes de terre croustillantes aux herbes</p>
+                        </div>
+                        <span class="menu-item-price">6,50 €</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tandoori -->
+            <div class="menu-category reveal">
+                <h2 class="menu-category-title" data-i18n="menuTandoori">Tandoori & Grillades</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Poulet Tandoori</h4>
+                            <p>Poulet mariné aux épices, grillé au four tandoor</p>
+                        </div>
+                        <span class="menu-item-price">14,50 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Chicken Tikka</h4>
+                            <p>Morceaux de poulet désossé marinés et grillés</p>
+                        </div>
+                        <span class="menu-item-price">13,50 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Seekh Kebab</h4>
+                            <p>Brochettes d'agneau haché aux épices</p>
+                        </div>
+                        <span class="menu-item-price">14,00 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Crevettes Tandoori</h4>
+                            <p>Crevettes marinées et grillées au four tandoor</p>
+                        </div>
+                        <span class="menu-item-price">16,00 €</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Curries -->
+            <div class="menu-category reveal">
+                <h2 class="menu-category-title" data-i18n="menuCurries">Curries Classiques</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Butter Chicken</h4>
+                            <p>Poulet tendre dans une sauce tomate crémeuse au beurre</p>
+                        </div>
+                        <span class="menu-item-price">15,00 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Chicken Tikka Masala</h4>
+                            <p>Poulet grillé dans une sauce masala onctueuse</p>
+                        </div>
+                        <span class="menu-item-price">15,00 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Agneau Curry</h4>
+                            <p>Agneau mijoté dans une sauce curry riche</p>
+                        </div>
+                        <span class="menu-item-price">16,50 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Rogan Josh</h4>
+                            <p>Agneau braisé aux épices du Kashmir</p>
+                        </div>
+                        <span class="menu-item-price">16,50 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Crevettes Masala</h4>
+                            <p>Crevettes dans une sauce aux oignons et tomates</p>
+                        </div>
+                        <span class="menu-item-price">17,00 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Vindaloo</h4>
+                            <p>Curry relevé — poulet ou agneau au choix</p>
+                        </div>
+                        <span class="menu-item-price">15,50 €</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Biryani -->
+            <div class="menu-category reveal">
+                <h2 class="menu-category-title" data-i18n="menuBiryani">Biryani & Riz</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Chicken Biryani</h4>
+                            <p>Riz basmati parfumé avec poulet tendre et épices</p>
+                        </div>
+                        <span class="menu-item-price">14,50 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Lamb Biryani</h4>
+                            <p>Riz basmati aux morceaux d'agneau et safran</p>
+                        </div>
+                        <span class="menu-item-price">16,00 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Vegetable Biryani</h4>
+                            <p>Riz parfumé aux légumes de saison</p>
+                        </div>
+                        <span class="menu-item-price">12,50 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Jeera Rice</h4>
+                            <p>Riz basmati au cumin</p>
+                        </div>
+                        <span class="menu-item-price">4,50 €</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Végétarien -->
+            <div class="menu-category reveal">
+                <h2 class="menu-category-title" data-i18n="menuVeg">Végétarien</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Palak Paneer</h4>
+                            <p>Fromage frais dans une sauce crémeuse aux épinards</p>
+                        </div>
+                        <span class="menu-item-price">13,00 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Dal Makhani</h4>
+                            <p>Lentilles noires mijotées au beurre et à la crème</p>
+                        </div>
+                        <span class="menu-item-price">12,00 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Chana Masala</h4>
+                            <p>Pois chiches dans une sauce épicée aux tomates</p>
+                        </div>
+                        <span class="menu-item-price">12,00 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Aloo Gobi</h4>
+                            <p>Pommes de terre et chou-fleur aux épices</p>
+                        </div>
+                        <span class="menu-item-price">11,50 €</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accompagnements -->
+            <div class="menu-category reveal">
+                <h2 class="menu-category-title" data-i18n="menuSides">Accompagnements</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Naan Nature</h4>
+                            <p>Pain traditionnel cuit au four tandoor</p>
+                        </div>
+                        <span class="menu-item-price">3,00 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Naan au Fromage</h4>
+                            <p>Naan garni de fromage fondant</p>
+                        </div>
+                        <span class="menu-item-price">4,00 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Garlic Naan</h4>
+                            <p>Naan à l'ail et au beurre</p>
+                        </div>
+                        <span class="menu-item-price">3,50 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Raita</h4>
+                            <p>Yaourt frais au concombre et menthe</p>
+                        </div>
+                        <span class="menu-item-price">3,00 €</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desserts -->
+            <div class="menu-category reveal">
+                <h2 class="menu-category-title" data-i18n="menuDesserts">Desserts</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Gulab Jamun</h4>
+                            <p>Beignets de lait dans un sirop de rose</p>
+                        </div>
+                        <span class="menu-item-price">6,00 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Kulfi</h4>
+                            <p>Glace traditionnelle indienne à la pistache</p>
+                        </div>
+                        <span class="menu-item-price">5,50 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Ras Malai</h4>
+                            <p>Douceur de fromage frais dans une crème au safran</p>
+                        </div>
+                        <span class="menu-item-price">6,50 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Kheer</h4>
+                            <p>Riz au lait aux cardamome et pistaches</p>
+                        </div>
+                        <span class="menu-item-price">5,50 €</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Boissons -->
+            <div class="menu-category reveal">
+                <h2 class="menu-category-title" data-i18n="menuDrinks">Boissons</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Lassi Mangue</h4>
+                            <p>Boisson au yaourt et mangue fraîche</p>
+                        </div>
+                        <span class="menu-item-price">5,00 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Lassi Nature</h4>
+                            <p>Boisson traditionnelle au yaourt</p>
+                        </div>
+                        <span class="menu-item-price">4,50 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Chai Masala</h4>
+                            <p>Thé noir aux épices traditionnelles</p>
+                        </div>
+                        <span class="menu-item-price">3,50 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Kingfisher Beer</h4>
+                            <p>Bière indienne premium</p>
+                        </div>
+                        <span class="menu-item-price">5,50 €</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="nav-logo">Le Gandhi</a>
+                    <p data-i18n="footerDesc">L'essence authentique de l'héritage indien à Toulouse.</p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/legandhi.toulouse/" target="_blank" rel="noopener"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/legandhi.toulouse/" target="_blank" rel="noopener"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3 data-i18n="footerLinks">Liens Rapides</h3>
+                    <ul>
+                        <li><a href="menu.html" data-i18n="footerMenu">Notre Menu</a></li>
+                        <li><a href="contact.html" data-i18n="footerReservation">Réservations</a></li>
+                        <li><a href="gallery.html" data-i18n="footerGallery">Galerie Photos</a></li>
+                        <li><a href="about.html" data-i18n="footerEvents">À Propos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 data-i18n="footerContact">Contact</h3>
+                    <p>39 Rue de l'Industrie, 31000 Toulouse</p>
+                    <p>05 61 99 21 03</p>
+                    <p>contact@legandhi-toulouse.fr</p>
+                </div>
+                <div class="footer-col">
+                    <h3 data-i18n="footerNewsletter">Newsletter</h3>
+                    <p data-i18n="footerNewsletterDesc">Abonnez-vous pour recevoir nos offres spéciales.</p>
+                    <form class="newsletter-form" onsubmit="event.preventDefault();"><input type="email"
+                            class="newsletter-input" placeholder="Votre email"
+                            data-i18n="footerNewsletterPlaceholder"><button type="submit" class="btn btn-gold btn-sm"
+                            data-i18n="footerNewsletterBtn">OK</button></form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footerCopyright">© 2025 Le Gandhi Toulouse. Tous droits réservés.</p>
+                <div class="footer-legal">
+                    <a href="#" data-i18n="footerLegal">Mentions Légales</a>
+                    <a href="#" data-i18n="footerPrivacy">Confidentialité</a>
+                    <a href="#" data-i18n="footerCookies">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

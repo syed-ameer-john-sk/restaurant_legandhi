@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Gandhi – Restaurant Indien à Toulouse | Cuisine Indienne Authentique</title>
+  <meta name="description"
+    content="Le Gandhi, restaurant indien authentique à Toulouse. Butter Chicken, Tandoori, Biryani et plus. Réservez votre table au 05 61 99 21 03.">
+  <meta name="keywords"
+    content="restaurant indien toulouse, indian restaurant toulouse, le gandhi, butter chicken, tandoori, biryani, cuisine indienne">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header" id="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html" class="nav-logo"><img src="Logo.png" alt="Le Gandhi"></a>
+
+        <ul class="nav-links">
+          <li><a href="index.html" class="active" data-i18n="navHome">Accueil</a></li>
+          <li><a href="menu.html" data-i18n="navMenu">Menu</a></li>
+          <li><a href="gallery.html" data-i18n="navGallery">Galerie</a></li>
+          <li><a href="about.html" data-i18n="navAbout">À Propos</a></li>
+          <li><a href="contact.html" data-i18n="navContact">Contact</a></li>
+        </ul>
+
+        <div class="nav-right">
+          <div class="nav-social">
+            <a href="https://www.instagram.com/legandhi.toulouse/" target="_blank" rel="noopener"
+              aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/legandhi.toulouse/" target="_blank" rel="noopener"
+              aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          </div>
+          <div class="lang-toggle">
+            <button class="lang-btn active" data-lang="fr">FR</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+          </div>
+          <a href="contact.html" class="btn btn-primary btn-sm" data-i18n="navReserve">Réserver</a>
+        </div>
+
+        <button class="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="home">
+    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline>
+      <source src="0310.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <button class="hero-audio-toggle" id="audioToggle" aria-label="Toggle audio">
+      <i class="fas fa-volume-mute"></i>
+    </button>
+    <div class="hero-content">
+      <p class="hero-subtitle" data-i18n="heroSubtitle">Restaurant Indien Authentique à Toulouse</p>
+      <h1 class="hero-title" data-i18n="heroTitle">Le Gandhi – Restaurant <em>Indien</em></h1>
+      <p class="hero-description" data-i18n="heroDesc">Une cuisine indienne authentique préparée avec des épices
+        traditionnelles et des ingrédients frais au cœur de Toulouse.</p>
+      <div class="hero-cta">
+        <a href="contact.html" class="btn btn-primary" data-i18n="heroCta1">Réserver une Table</a>
+        <a href="menu.html" class="btn btn-outline" data-i18n="heroCta2">Voir le Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SPECIALTIES ========== -->
+  <section class="section section-dark" id="specialties">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="specLabel">Nos Plats</span>
+        <h2 class="section-title" data-i18n="specTitle">Nos Spécialités Indiennes</h2>
+        <p class="section-desc" data-i18n="specDesc">Découvrez nos plats les plus populaires, préparés avec des épices
+          indiennes authentiques et des techniques de cuisson traditionnelles.</p>
+      </div>
+      <div class="specialties-grid">
+        <div class="specialty-card reveal reveal-delay-1">
+          <div class="specialty-card-img-wrapper">
+            <img src="images/butter-chicken.png" alt="Butter Chicken" class="specialty-card-img">
+          </div>
+          <div class="specialty-card-body">
+            <h3 class="specialty-card-title" data-i18n="specButterChicken">Butter Chicken</h3>
+            <p class="specialty-card-desc" data-i18n="specButterChickenDesc">Poulet tendre cuit dans une sauce curry
+              crémeuse à la tomate.</p>
+          </div>
+        </div>
+        <div class="specialty-card reveal reveal-delay-2">
+          <div class="specialty-card-img-wrapper">
+            <img src="images/tandoori-chicken.png" alt="Poulet Tandoori" class="specialty-card-img">
+          </div>
+          <div class="specialty-card-body">
+            <h3 class="specialty-card-title" data-i18n="specTandoori">Poulet Tandoori</h3>
+            <p class="specialty-card-desc" data-i18n="specTandooriDesc">Poulet mariné au yaourt et aux épices, grillé au
+              four tandoor.</p>
+          </div>
+        </div>
+        <div class="specialty-card reveal reveal-delay-3">
+          <div class="specialty-card-img-wrapper">
+            <img src="images/lamb-curry.png" alt="Agneau Curry" class="specialty-card-img">
+          </div>
+          <div class="specialty-card-body">
+            <h3 class="specialty-card-title" data-i18n="specLamb">Agneau Curry</h3>
+            <p class="specialty-card-desc" data-i18n="specLambDesc">Agneau mijoté lentement dans une sauce curry riche
+              et savoureuse.</p>
+          </div>
+        </div>
+        <div class="specialty-card reveal reveal-delay-4">
+          <div class="specialty-card-img-wrapper">
+            <img src="images/biryani.png" alt="Biryani Indien" class="specialty-card-img">
+          </div>
+          <div class="specialty-card-body">
+            <h3 class="specialty-card-title" data-i18n="specBiryani">Biryani Indien</h3>
+            <p class="specialty-card-desc" data-i18n="specBiryaniDesc">Riz basmati parfumé cuit avec des épices, des
+              herbes et de la viande tendre.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== STORY ========== -->
+  <section class="section section-alt" id="about">
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-image reveal">
+          <img src="images/restaurant-interior.png" alt="Le Gandhi Interior">
+        </div>
+        <div class="story-content reveal reveal-delay-2">
+          <span class="section-label" data-i18n="storyLabel">Notre Histoire</span>
+          <h2 data-i18n="storyTitle">Une Passion pour l'Authenticité</h2>
+          <p data-i18n="storyP1">Le Gandhi est bien plus qu'un restaurant ; c'est un voyage culinaire au cœur de l'Inde.
+            Fondé avec une passion pour les saveurs authentiques, nous apportons le riche héritage de la cuisine
+            indienne dans les rues de Toulouse.</p>
+          <p data-i18n="storyP2">Nos chefs utilisent des <span class="highlight">épices traditionnelles importées
+              directement d'Inde</span> et des techniques ancestrales comme la cuisson au four tandoor pour garantir que
+            chaque bouchée est une explosion de goût authentique.</p>
+          <a href="about.html" class="btn btn-outline btn-sm" style="margin-top: 20px;" data-i18n="navAbout">À
+            Propos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MENU PREVIEW ========== -->
+  <section class="section section-dark" id="menu">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="menuPreviewLabel">Notre Carte</span>
+        <h2 class="section-title" data-i18n="menuPreviewTitle">Découvrez Notre Menu</h2>
+        <p class="section-desc" data-i18n="menuPreviewDesc">Explorez la diversité des saveurs indiennes à travers notre
+          carte complète.</p>
+      </div>
+      <div class="menu-preview-grid">
+        <div class="menu-preview-card reveal reveal-delay-1">
+          <h3 data-i18n="menuCat1">Entrées</h3>
+          <p data-i18n="menuCat1Desc">Samosas, Pakoras, Soupe de Lentilles et plus encore.</p>
+        </div>
+        <div class="menu-preview-card reveal reveal-delay-2">
+          <h3 data-i18n="menuCat2">Plats Principaux</h3>
+          <p data-i18n="menuCat2Desc">Curries, Tandoori, Biryani — un festin de saveurs.</p>
+        </div>
+        <div class="menu-preview-card reveal reveal-delay-3">
+          <h3 data-i18n="menuCat3">Desserts & Boissons</h3>
+          <p data-i18n="menuCat3Desc">Lassi Mangue, Gulab Jamun, Thé Chai Masala.</p>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 40px;" class="reveal">
+        <a href="menu.html" class="btn btn-gold" data-i18n="menuPreviewCta">Voir le Menu Complet</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="section section-alt" id="testimonials">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="testiLabel">Avis Clients</span>
+        <h2 class="section-title" data-i18n="testiTitle">Ce Que Disent Nos Clients</h2>
+      </div>
+      <div class="testimonials-slider reveal">
+        <div class="testimonial-track">
+          <div class="testimonial-card">
+            <p class="testimonial-text" data-i18n="testi1">Une explosion de saveurs ! Le meilleur restaurant indien de
+              Toulouse sans aucun doute. Le Butter Chicken est à tomber.</p>
+            <span class="testimonial-author" data-i18n="testi1Author">Jean Dupont</span>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text" data-i18n="testi2">Authenticité et service impeccable. On se sent vraiment
+              accueilli. Les épices sont parfaitement équilibrées.</p>
+            <span class="testimonial-author" data-i18n="testi2Author">Marie Laurent</span>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text" data-i18n="testi3">Parfait pour un dîner romantique. L'ambiance est chaleureuse
+              et les plats sont généreux.</p>
+            <span class="testimonial-author" data-i18n="testi3Author">Pierre Bernard</span>
+          </div>
+        </div>
+        <div class="testimonial-dots">
+          <button class="testimonial-dot active" aria-label="Slide 1"></button>
+          <button class="testimonial-dot" aria-label="Slide 2"></button>
+          <button class="testimonial-dot" aria-label="Slide 3"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== INSTAGRAM FEED ========== -->
+  <section class="instagram-section" id="instagram">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="section-title" data-i18n="instaTitle">Suivez Le Gandhi</h2>
+      </div>
+
+      <div class="insta-profile-bar reveal">
+        <div class="insta-avatar">G</div>
+        <div class="insta-name">
+          <strong>Le Gandhi</strong>
+          <span>@legandhi.toulouse</span>
+        </div>
+        <div class="insta-stats">
+          <div class="insta-stat">
+            <span class="insta-stat-num">64</span>
+            <span class="insta-stat-label" data-i18n="instaPosts">publications</span>
+          </div>
+          <div class="insta-stat">
+            <span class="insta-stat-num">1.2K</span>
+            <span class="insta-stat-label" data-i18n="instaFollowers">abonnés</span>
+          </div>
+          <div class="insta-stat">
+            <span class="insta-stat-num">186</span>
+            <span class="insta-stat-label" data-i18n="instaFollowing">abonnements</span>
+          </div>
+        </div>
+        <a href="https://www.instagram.com/legandhi.toulouse/" target="_blank" rel="noopener"
+          class="btn btn-instagram btn-sm">
+          <i class="fab fa-instagram"></i> <span data-i18n="instaFollow">S'abonner</span>
+        </a>
+      </div>
+
+      <div class="insta-grid reveal">
+        <div class="insta-grid-item">
+          <img src="images/butter-chicken.png" alt="Butter Chicken">
+          <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
+        </div>
+        <div class="insta-grid-item">
+          <img src="images/tandoori-chicken.png" alt="Tandoori Chicken">
+          <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
+        </div>
+        <div class="insta-grid-item">
+          <img src="images/naan-bread.png" alt="Naan Bread">
+          <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
+        </div>
+        <div class="insta-grid-item">
+          <img src="images/samosa.png" alt="Samosa">
+          <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
+        </div>
+        <div class="insta-grid-item">
+          <img src="images/thali-platter.png" alt="Thali Platter">
+          <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
+        </div>
+        <div class="insta-grid-item">
+          <img src="images/chicken-tikka.png" alt="Chicken Tikka">
+          <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
+        </div>
+        <div class="insta-grid-item">
+          <img src="images/palak-paneer.png" alt="Palak Paneer">
+          <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
+        </div>
+        <div class="insta-grid-item">
+          <img src="images/biryani.png" alt="Biryani">
+          <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
+        </div>
+      </div>
+
+      <div class="insta-load-more reveal">
+        <a href="https://www.instagram.com/legandhi.toulouse/" target="_blank" rel="noopener" class="btn btn-instagram"
+          data-i18n="instaLoadMore">Charger plus</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== LOCATION ========== -->
+  <section class="section section-alt" id="location">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="locationLabel">Nous Trouver</span>
+        <h2 class="section-title" data-i18n="locationTitle">Nous Trouver</h2>
+      </div>
+      <div class="location-grid">
+        <div class="location-info reveal">
+          <div class="location-item">
+            <div class="location-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="location-text">
+              <h4 data-i18n="locationAddress">Adresse</h4>
+              <p data-i18n="locationAddressVal">39 Rue de l'Industrie, 31000 Toulouse</p>
+            </div>
+          </div>
+          <div class="location-item">
+            <div class="location-icon"><i class="fas fa-phone-alt"></i></div>
+            <div class="location-text">
+              <h4 data-i18n="locationPhone">Téléphone</h4>
+              <p data-i18n="locationPhoneVal">05 61 99 21 03</p>
+            </div>
+          </div>
+          <div class="location-item">
+            <div class="location-icon"><i class="fas fa-clock"></i></div>
+            <div class="location-text">
+              <h4 data-i18n="locationHours">Horaires</h4>
+              <p data-i18n="locationHoursVal">Lun - Dim: 12h00-14h30 / 19h00-23h00</p>
+            </div>
+          </div>
+        </div>
+        <div class="location-map reveal reveal-delay-2">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2889.8!2d1.4536!3d43.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDPCsDM2JzAwLjAiTiAxwrAyNycxMi45IkU!5e0!3m2!1sfr!2sfr!4v1234567890"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo"><img src="Logo.png" alt="Le Gandhi"></a>
+          <p data-i18n="footerDesc">L'essence authentique de l'héritage indien à Toulouse. L'excellence dans chaque
+            plat, la tradition dans chaque épice.</p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/legandhi.toulouse/" target="_blank" rel="noopener"
+              aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/legandhi.toulouse/" target="_blank" rel="noopener"
+              aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3 data-i18n="footerLinks">Liens Rapides</h3>
+          <ul>
+            <li><a href="menu.html" data-i18n="footerMenu">Notre Menu</a></li>
+            <li><a href="contact.html" data-i18n="footerReservation">Réservations</a></li>
+            <li><a href="gallery.html" data-i18n="footerGallery">Galerie Photos</a></li>
+            <li><a href="about.html" data-i18n="footerEvents">À Propos</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 data-i18n="footerContact">Contact</h3>
+          <p>39 Rue de l'Industrie, 31000 Toulouse</p>
+          <p>05 61 99 21 03</p>
+          <p>contact@legandhi-toulouse.fr</p>
+        </div>
+
+        <div class="footer-col">
+          <h3 data-i18n="footerNewsletter">Newsletter</h3>
+          <p data-i18n="footerNewsletterDesc">Abonnez-vous pour recevoir nos offres spéciales.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault();">
+            <input type="email" class="newsletter-input" data-i18n="footerNewsletterPlaceholder"
+              placeholder="Votre email">
+            <button type="submit" class="btn btn-gold btn-sm" data-i18n="footerNewsletterBtn">OK</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p data-i18n="footerCopyright">© 2025 Le Gandhi Toulouse. Tous droits réservés.</p>
+        <div class="footer-legal">
+          <a href="#" data-i18n="footerLegal">Mentions Légales</a>
+          <a href="#" data-i18n="footerPrivacy">Confidentialité</a>
+          <a href="#" data-i18n="footerCookies">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="translations.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
