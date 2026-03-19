@@ -11,9 +11,80 @@
     content="restaurant indien toulouse, indian restaurant toulouse, le gandhi, butter chicken, tandoori, biryani, cuisine indienne">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Structured Data for AI Search -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Le Gandhi",
+    "alternateName": "Le Gandhi Toulouse",
+    "description": "Restaurant indien authentique à Toulouse proposant Butter Chicken, Tandoori, Biryani et plus. Authentic Indian restaurant in Toulouse.",
+    "url": "https://legandhi-toulouse.fr",
+    "telephone": "+33780738678",
+    "email": "contact@legandhi-toulouse.fr",
+    "servesCuisine": ["Indian", "Cuisine Indienne", "Tandoori", "Curry"],
+    "priceRange": "€€",
+    "image": "https://legandhi-toulouse.fr/images/restaurant-interior.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "39 Rue de l'Industrie",
+      "addressLocality": "Toulouse",
+      "postalCode": "31000",
+      "addressCountry": "FR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 43.6,
+      "longitude": 1.4536
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "11:30",
+        "closes": "14:30"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "18:30",
+        "closes": "22:30"
+      }
+    ],
+    "menu": "https://legandhi-toulouse.fr/menu.html",
+    "acceptsReservations": "True",
+    "sameAs": [
+      "https://www.instagram.com/legandhi.toulouse/",
+      "https://www.facebook.com/legandhi.toulouse/"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Le Gandhi – Restaurant Indien à Toulouse",
+    "url": "https://legandhi-toulouse.fr",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://legandhi-toulouse.fr/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
 </head>
 
 <body>
+
+  <!-- ========== OPENING HOURS BANNER ========== -->
+  <div class="opening-hours-banner" id="openingHoursBanner">
+    <div class="opening-hours-inner">
+      <span class="opening-hours-dot" id="openingDot"></span>
+      <span class="opening-hours-text" id="openingText"></span>
+    </div>
+    <button class="opening-hours-close" id="closeBanner" aria-label="Close">&times;</button>
+  </div>
 
   <!-- ========== HEADER ========== -->
   <header class="header" id="header">
@@ -381,6 +452,16 @@
       </div>
     </div>
   </footer>
+
+  <!-- Floating Action Buttons -->
+  <div class="floating-actions">
+    <a href="https://wa.me/33780738678" class="fab-btn fab-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="tel:+33780738678" class="fab-btn fab-call" aria-label="Appeler">
+      <i class="fas fa-phone-alt"></i>
+    </a>
+  </div>
 
   <script src="translations.js"></script>
   <script src="main.js"></script>

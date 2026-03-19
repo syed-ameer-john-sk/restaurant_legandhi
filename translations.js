@@ -76,7 +76,7 @@ const translations = {
     locationPhone: "Téléphone",
     locationPhoneVal: "05 61 99 21 03",
     locationHours: "Horaires",
-    locationHoursVal: "Lun - Dim: 12h00-14h30 / 19h00-23h00",
+    locationHoursVal: "Lun - Dim: 11h30-14h30 / 18h30-22h30",
 
     // Footer
     footerDesc: "L'essence authentique de l'héritage indien à Toulouse. L'excellence dans chaque plat, la tradition dans chaque épice.",
@@ -226,7 +226,7 @@ const translations = {
     locationPhone: "Phone",
     locationPhoneVal: "05 61 99 21 03",
     locationHours: "Hours",
-    locationHoursVal: "Mon - Sun: 12:00-2:30 PM / 7:00-11:00 PM",
+    locationHoursVal: "Mon - Sun: 11:30 AM-2:30 PM / 6:30 PM-10:30 PM",
 
     // Footer
     footerDesc: "Bringing the true essence of Indian heritage to Toulouse. Excellence in every dish, tradition in every spice.",

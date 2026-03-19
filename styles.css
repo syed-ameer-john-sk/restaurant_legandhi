@@ -176,8 +176,8 @@ h5 {
 
 .hero-audio-toggle {
   position: absolute;
-  bottom: 30px;
-  right: 30px;
+  bottom: 80px;
+  left: 30px;
   z-index: 10;
   width: 48px;
   height: 48px;
@@ -1075,23 +1075,58 @@ h5 {
 }
 
 .menu-category {
-  margin-bottom: 60px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(212, 168, 67, 0.1);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.menu-category-toggle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  background: rgba(42, 26, 26, 0.4);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.menu-category-toggle:hover {
+  background: rgba(42, 26, 26, 0.7);
 }
 
 .menu-category-title {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   color: var(--color-gold);
-  margin-bottom: 8px;
-  padding-bottom: 12px;
-  border-bottom: 2px solid rgba(212, 168, 67, 0.2);
+  margin: 0;
+  padding: 0;
+  border: none;
   display: inline-block;
+}
+
+.menu-toggle-icon {
+  color: var(--color-gold);
+  font-size: 1rem;
+  transition: transform var(--transition-med);
+}
+
+.menu-category.accordion-open .menu-toggle-icon {
+  transform: rotate(180deg);
 }
 
 .menu-items {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
-  margin-top: 24px;
+  padding: 0 24px;
+  overflow: hidden;
+  transition: max-height var(--transition-med), padding var(--transition-med);
+}
+
+.menu-category.accordion-open .menu-items {
+  padding: 24px;
 }
 
 .menu-item {
@@ -1557,6 +1592,10 @@ h5 {
     grid-template-columns: 1fr;
   }
 
+  .menu-items {
+    grid-template-columns: 1fr;
+  }
+
   .footer-grid {
     grid-template-columns: 1fr;
   }
@@ -1595,13 +1634,31 @@ h5 {
   }
 
   .hero-audio-toggle {
-    bottom: 100px;
-    right: 20px;
-    width: 44px;
-    height: 44px;
-    font-size: 1.1rem;
+    bottom: 120px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
     display: flex !important;
     z-index: 10;
+  }
+
+  /* Fix contact form grid on mobile */
+  .contact-grid div[style*="grid-template-columns"] {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .insta-stats {
+    gap: 12px;
+  }
+
+  .location-item {
+    flex-shrink: 0;
+  }
+
+  .location-icon {
+    flex-shrink: 0;
   }
 }
 
@@ -1614,4 +1671,205 @@ h5 {
   .gallery-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ================================
+   OPENING HOURS BANNER
+   ================================ */
+.opening-hours-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background: rgba(26, 26, 26, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(212, 168, 67, 0.2);
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.5s ease;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+.opening-hours-banner.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.opening-hours-banner.dismissed {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.opening-hours-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.opening-hours-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.opening-hours-dot.pulse-green {
+  background: #22c55e;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+  animation: pulseGreen 2s ease-in-out infinite;
+}
+
+.opening-hours-dot.pulse-red {
+  background: #ef4444;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
+  animation: pulseRed 2s ease-in-out infinite;
+}
+
+@keyframes pulseGreen {
+  0%, 100% { box-shadow: 0 0 8px rgba(34, 197, 94, 0.4); }
+  50% { box-shadow: 0 0 16px rgba(34, 197, 94, 0.8), 0 0 32px rgba(34, 197, 94, 0.3); }
+}
+
+@keyframes pulseRed {
+  0%, 100% { box-shadow: 0 0 8px rgba(239, 68, 68, 0.4); }
+  50% { box-shadow: 0 0 16px rgba(239, 68, 68, 0.8), 0 0 32px rgba(239, 68, 68, 0.3); }
+}
+
+.opening-hours-text {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: var(--color-cream);
+}
+
+.opening-hours-banner.is-open .opening-hours-text {
+  color: #86efac;
+}
+
+.opening-hours-banner.is-closed .opening-hours-text {
+  color: #fca5a5;
+}
+
+.opening-hours-close {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  border-radius: 4px;
+}
+
+.opening-hours-close:hover {
+  color: var(--color-cream);
+  transform: translateY(-50%) scale(1.2);
+}
+
+/* Push header down when banner is visible */
+.opening-hours-banner.visible ~ .header {
+  top: 40px;
+}
+
+@media (max-width: 768px) {
+  .opening-hours-banner {
+    padding: 8px 16px;
+  }
+
+  .opening-hours-text {
+    font-size: 0.78rem;
+  }
+
+  .opening-hours-close {
+    right: 8px;
+  }
+
+  .opening-hours-banner.visible ~ .header {
+    top: 36px;
+  }
+}
+
+/* ================================
+   FLOATING ACTION BUTTONS
+   ================================ */
+.floating-actions {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 1050;
+}
+
+.fab-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.fab-btn:hover {
+  transform: scale(1.12) translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.fab-whatsapp {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+}
+
+.fab-whatsapp:hover {
+  box-shadow: 0 8px 32px rgba(37, 211, 102, 0.5);
+}
+
+.fab-call {
+  background: linear-gradient(135deg, var(--color-gold), var(--color-gold-light));
+  color: var(--color-dark);
+}
+
+.fab-call:hover {
+  box-shadow: 0 8px 32px rgba(212, 168, 67, 0.5);
+}
+
+@media (max-width: 768px) {
+  .floating-actions {
+    bottom: 20px;
+    right: 16px;
+    gap: 12px;
+  }
+
+  .fab-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+  }
+}
+
+/* ================================
+   GLOBAL MOBILE OVERFLOW FIX
+   ================================ */
+html, body {
+  overflow-x: hidden;
 }

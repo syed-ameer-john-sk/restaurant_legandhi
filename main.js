@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initLightbox();
     initHeroVideo();
     removeLogoWhiteBackground();
+    initOpeningHours();
+    initMenuAccordion();
 });
 
 // ================================
@@ -150,6 +152,9 @@ function applyLanguage(lang) {
 
     // Update html lang attribute
     document.documentElement.lang = lang;
+
+    // Trigger event for dynamic components (like opening hours banner)
+    document.dispatchEvent(new Event('languageChanged'));
 }
 
 // ================================
@@ -223,9 +228,10 @@ function initHeroVideo() {
     const hero = document.querySelector('.hero');
     if (!video || !toggle || !hero) return;
 
-    // Start muted for autoplay compliance, reduced volume
+    // Start muted for autoplay compliance
     video.muted = true;
     video.volume = 0.3;
+    let userDismissed = false; // Track if user manually clicked toggle
 
     function updateIcon() {
         const icon = toggle.querySelector('i');
@@ -234,17 +240,27 @@ function initHeroVideo() {
 
     toggle.addEventListener('click', () => {
         video.muted = !video.muted;
+        userDismissed = true; // Lock this preference
         updateIcon();
+        if(!video.muted) {
+            video.play().catch(e => console.log(e));
+        }
     });
 
-    // Auto-mute when scrolling past the hero section
-    window.addEventListener('scroll', () => {
-        const heroBottom = hero.offsetTop + hero.offsetHeight;
-        if (window.scrollY > heroBottom - 100 && !video.muted) {
-            video.muted = true;
-            updateIcon();
-        }
-    }, { passive: true });
+    // Use IntersectionObserver for scroll-based playback
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
+                // Return to view: guarantee play, retain current mute state
+                video.play().catch(e => console.log("Browser blocked autoplay:", e));
+                updateIcon();
+            } else {
+                video.pause();
+            }
+        });
+    }, { threshold: [0, 0.3] });
+
+    observer.observe(hero);
 }
 
 // ================================
@@ -441,4 +457,154 @@ function showReservationConfirmation(callback) {
         card.style.opacity = '0';
         setTimeout(() => overlay.remove(), 300);
     }
+}
+
+// ================================
+// Opening Hours Status Banner
+// ================================
+function initOpeningHours() {
+    const banner = document.getElementById('openingHoursBanner');
+    const dot = document.getElementById('openingDot');
+    const text = document.getElementById('openingText');
+    const closeBtn = document.getElementById('closeBanner');
+    if (!banner || !dot || !text) return;
+
+    // Restaurant opening hours (Europe/Paris timezone)
+    // Monday to Sunday: 11:30-14:30 and 18:30-22:30
+    const TIMEZONE = 'Europe/Paris';
+    const SCHEDULE = [
+        { open: { h: 11, m: 30 }, close: { h: 14, m: 30 } },
+        { open: { h: 18, m: 30 }, close: { h: 22, m: 30 } }
+    ];
+
+    function getParisTime() {
+        const now = new Date();
+        const parisStr = now.toLocaleString('en-US', { timeZone: TIMEZONE });
+        return new Date(parisStr);
+    }
+
+    function toMinutes(h, m) {
+        return h * 60 + m;
+    }
+
+    function formatTime(h, m, lang) {
+        if (lang === 'fr') {
+            return `${h}h${m.toString().padStart(2, '0')}`;
+        }
+        const period = h >= 12 ? 'PM' : 'AM';
+        const h12 = h % 12 || 12;
+        return `${h12}:${m.toString().padStart(2, '0')} ${period}`;
+    }
+
+    function updateStatus() {
+        const paris = getParisTime();
+        const currentMinutes = toMinutes(paris.getHours(), paris.getMinutes());
+        const lang = document.documentElement.lang || 'fr';
+        const isFr = lang === 'fr';
+
+        let isOpen = false;
+        let nextOpenSlot = null;
+
+        // Check if currently within any opening slot
+        for (const slot of SCHEDULE) {
+            const openMin = toMinutes(slot.open.h, slot.open.m);
+            const closeMin = toMinutes(slot.close.h, slot.close.m);
+            if (currentMinutes >= openMin && currentMinutes < closeMin) {
+                isOpen = true;
+                break;
+            }
+        }
+
+        if (!isOpen) {
+            // Find the next opening time
+            for (const slot of SCHEDULE) {
+                const openMin = toMinutes(slot.open.h, slot.open.m);
+                if (currentMinutes < openMin) {
+                    nextOpenSlot = slot;
+                    break;
+                }
+            }
+            // If no slot found today, next slot is tomorrow's first slot
+            if (!nextOpenSlot) {
+                nextOpenSlot = SCHEDULE[0];
+            }
+        }
+
+        if (isOpen) {
+            banner.classList.add('is-open');
+            banner.classList.remove('is-closed');
+            dot.classList.add('pulse-green');
+            dot.classList.remove('pulse-red');
+            text.textContent = isFr ? 'Restaurant Ouvert' : 'Restaurant Open';
+        } else {
+            banner.classList.add('is-closed');
+            banner.classList.remove('is-open');
+            dot.classList.add('pulse-red');
+            dot.classList.remove('pulse-green');
+            const nextTime = formatTime(nextOpenSlot.open.h, nextOpenSlot.open.m, lang);
+            text.textContent = isFr
+                ? `Restaurant Fermé – Ouvre à ${nextTime}`
+                : `Restaurant Closed – Opens at ${nextTime}`;
+        }
+
+        banner.classList.add('visible');
+    }
+
+    // Close button
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            banner.classList.remove('visible');
+            banner.classList.add('dismissed');
+        });
+    }
+
+    // Initial update
+    updateStatus();
+
+    // Re-check every 60 seconds
+    setInterval(updateStatus, 60000);
+
+    // Update immediately when language changes
+    document.addEventListener('languageChanged', updateStatus);
+}
+
+// ================================
+// Menu Page Accordion
+// ================================
+function initMenuAccordion() {
+    const categories = document.querySelectorAll('.menu-category');
+    if (!categories.length) return;
+
+    categories.forEach((cat, index) => {
+        const toggle = cat.querySelector('.menu-category-toggle');
+        const items = cat.querySelector('.menu-items');
+        if (!toggle || !items) return;
+
+        // First category starts expanded
+        if (index === 0) {
+            cat.classList.add('accordion-open');
+            items.style.maxHeight = items.scrollHeight + 'px';
+        } else {
+            items.style.maxHeight = '0';
+        }
+
+        toggle.addEventListener('click', () => {
+            const isOpen = cat.classList.contains('accordion-open');
+
+            // Close all categories
+            categories.forEach(otherCat => {
+                const otherItems = otherCat.querySelector('.menu-items');
+                if (otherItems) {
+                    otherCat.classList.remove('accordion-open');
+                    otherItems.style.maxHeight = '0';
+                }
+            });
+
+            // Toggle current (if it was closed, open it)
+            if (!isOpen) {
+                cat.classList.add('accordion-open');
+                items.style.maxHeight = items.scrollHeight + 'px';
+            }
+        });
+    });
 }
