@@ -1463,6 +1463,8 @@ h5 {
   outline: none;
   transition: all var(--transition-fast);
   -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .form-input::placeholder {
@@ -1480,9 +1482,9 @@ h5 {
 /* Select dropdown styling */
 .form-select {
   cursor: pointer;
-  appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
+  appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23d4a843' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 16px center;
@@ -1853,6 +1855,20 @@ h5 {
   box-shadow: 0 8px 32px rgba(212, 168, 67, 0.5);
 }
 
+.fab-tiktok {
+  background: linear-gradient(135deg, #010101, #2d2d2d);
+}
+
+.fab-tiktok:hover {
+  box-shadow: 0 8px 32px rgba(105, 201, 208, 0.5);
+}
+
+.fab-tiktok svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  fill: white;
+}
+
 @media (max-width: 768px) {
   .floating-actions {
     bottom: 20px;
@@ -1872,4 +1888,295 @@ h5 {
    ================================ */
 html, body {
   overflow-x: hidden;
+}
+
+/* ================================
+   Language Dropdown
+   ================================ */
+.lang-dropdown {
+  position: relative;
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.lang-dropbtn {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  padding: 8px 12px;
+  border: 1px solid rgba(212, 168, 67, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.lang-dropbtn:hover {
+  background: rgba(212, 168, 67, 0.1);
+  border-color: var(--color-gold);
+}
+
+.lang-dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #1a1a1a;
+  min-width: 160px;
+  box-shadow: 0px 8px 32px 0px rgba(0,0,0,0.5);
+  z-index: 1000;
+  border-radius: 8px;
+  border: 1px solid rgba(212, 168, 67, 0.2);
+  margin-top: 5px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.lang-dropdown-content a {
+  color: var(--color-cream);
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 0.85rem;
+  transition: background 0.2s ease;
+}
+
+.lang-dropdown-content a:hover {
+  background-color: rgba(212, 168, 67, 0.1);
+  color: var(--color-gold);
+}
+
+.lang-dropdown.active .lang-dropdown-content {
+  display: block;
+}
+
+/* ================================
+   Delivery Partners
+   ================================ */
+.delivery-partners {
+  padding: 60px 0;
+  background: #111;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.delivery-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.delivery-info h2 {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  color: var(--color-gold);
+}
+
+.delivery-info p {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+.delivery-logos {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.delivery-logo img {
+  height: 64px;
+  width: auto;
+  filter: grayscale(1) brightness(2) opacity(0.85);
+  transition: all var(--transition-med);
+}
+
+.delivery-logo img:hover {
+  filter: grayscale(0) brightness(1) opacity(1);
+  transform: translateY(-3px);
+}
+
+@media (max-width: 992px) {
+  .delivery-grid {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+  .delivery-logos {
+    justify-content: center;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .lang-dropdown {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+  .delivery-info h2 {
+    font-size: 1.5rem;
+  }
+  .delivery-logos {
+    gap: 30px;
+  }
+  .delivery-logo img {
+    height: 24px;
+  }
+}
+
+/* ================================
+   Menu Specials & Legend
+   ================================ */
+.menu-info-labels {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.menu-info-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-cream);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.menu-info-label i {
+  color: #22c55e;
+}
+
+.v2-spice-legend {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 30px !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  padding: 15px 30px !important;
+  border-radius: 50px !important;
+  border: 1px solid rgba(212, 168, 67, 0.2) !important;
+  flex-wrap: wrap !important;
+  margin: 20px auto !important;
+  width: fit-content !important;
+  position: relative !important;
+}
+
+.v2-spice-item {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 10px !important;
+  min-width: max-content !important;
+  position: static !important;
+}
+
+.v2-spice-item span:last-child {
+  font-size: 0.95rem !important;
+  color: var(--color-cream) !important;
+  font-weight: 500 !important;
+  position: static !important;
+}
+
+.v2-spice-dot {
+  width: 15px !important;
+  height: 15px !important;
+  border-radius: 50% !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  position: static !important;
+}
+
+.v2-red { background-color: #ef4444 !important; }
+.v2-black { background-color: #1a1a1a !important; border: 1px solid #444 !important; }
+.v2-brown { background-color: #92400e !important; }
+.v2-blue { background-color: #3b82f6 !important; }
+
+/* ================================
+   Menu Category Images
+   ================================ */
+.menu-category-image {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+  background: #111;
+}
+
+.menu-category-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0.9;
+}
+
+.menu-category:hover .menu-category-image img {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .menu-category-image {
+    height: 180px;
+  }
+}
+
+/* ========== NEW BADGE & FEATURED CARD ========== */
+.badge-new {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: linear-gradient(135deg, #FFD700, #FF4500); /* Attractive Gold to Orange-Red */
+  color: var(--color-white);
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(255, 69, 0, 0.4);
+  text-transform: uppercase;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  animation: badgePulse 2s infinite alternate;
+}
+
+@keyframes badgePulse {
+  0% { transform: scale(1); box-shadow: 0 4px 15px rgba(255, 69, 0, 0.4); }
+  100% { transform: scale(1.05); box-shadow: 0 4px 25px rgba(255, 69, 0, 0.7); }
+}
+
+.specialty-card.featured {
+  grid-column: 1 / -1; /* ONLY SHAWAMA ON THE TOP */
+  max-width: 900px;
+  margin: 0 auto 30px auto;
+  border: 2px solid var(--color-gold);
+  box-shadow: 0 0 40px rgba(212, 168, 67, 0.2);
+}
+
+.specialty-card.featured .specialty-card-img-wrapper {
+  height: 350px; /* Taller image for the top-only featured item */
+}
+
+.specialty-card.featured .specialty-card-img {
+  height: 100%;
+}
+
+@media (max-width: 992px) {
+  .specialty-card.featured {
+    grid-column: 1 / span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .specialty-card.featured {
+    grid-column: 1 / -1;
+  }
 }

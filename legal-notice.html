@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="legalNoticeTitle">Le Gandhi – Mentions Légales</title>
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="translations.js"></script>
+    <script src="i18n.js"></script>
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header scrolled" id="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html" class="nav-logo"><img src="Logo_transparent.png" alt="Le Gandhi"></a>
+
+        <ul class="nav-links">
+          <li><a href="index.html" data-i18n="navHome">Accueil</a></li>
+          <li><a href="menu.html" data-i18n="navMenu">Menu</a></li>
+          <li><a href="gallery.html" data-i18n="navGallery">Galerie</a></li>
+          <li><a href="about.html" data-i18n="navAbout">À Propos</a></li>
+          <li><a href="contact.html" data-i18n="navContact">Contact</a></li>
+        </ul>
+
+        <div class="nav-right">
+          <div class="lang-dropdown">
+            <button class="lang-dropbtn" id="langDropBtn">
+              <span id="currentLang">FR</span> <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="lang-dropdown-content" id="langOptions">
+              <a href="#" data-lang="fr">Français</a>
+              <a href="#" data-lang="en">English</a>
+              <a href="#" data-lang="es">Español</a>
+              <a href="#" data-lang="de">Deutsch</a>
+              <a href="#" data-lang="it">Italiano</a>
+              <a href="#" data-lang="cs">Čeština</a>
+              <a href="#" data-lang="ru">Русский</a>
+              <a href="#" data-lang="hu">Magyar</a>
+              <a href="#" data-lang="sk">Slovensky</a>
+              <a href="#" data-lang="nl">Nederlands</a>
+              <a href="#" data-lang="tr">Türkçe</a>
+              <a href="#" data-lang="pl">Polski</a>
+              <a href="#" data-lang="uk">Українська</a>
+              <a href="#" data-lang="pt">Português</a>
+              <a href="#" data-lang="hr">Hrvatski</a>
+              <a href="#" data-lang="ro">Română</a>
+            </div>
+          </div>
+          <a href="contact.html" class="btn btn-primary btn-sm" data-i18n="navReserve">Réserver</a>
+        </div>
+
+        <button class="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+    <main class="legal-page" style="padding-top: 150px; padding-bottom: 100px; background: #120c0c; color: #f5f0e8; min-height: 80vh;">
+        <div class="container" style="max-width: 900px;">
+            <h1 data-i18n="legalNoticeTitle" style="font-family: 'Playfair Display', serif; color: #d4a843; margin-bottom: 50px; text-align: center; font-size: 2.5rem;"></h1>
+            <div data-i18n="legalNoticeContent" style="line-height: 2; color: #b8a99a; font-size: 1.15rem; background: rgba(255,255,255,0.02); padding: 50px; border-radius: 30px; border: 1px solid rgba(212,168,67,0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer" style="text-align: center; padding: 60px 0; background: #0a0707; border-top: 1px solid rgba(212,168,67,0.1);">
+        <div class="container">
+            <p data-i18n="footerCopyright">© 2026 Le Gandhi Toulouse. Tous droits réservés.</p>
+            <div class="footer-legal" style="margin-top: 20px;">
+              <a href="legal-notice.html" data-i18n="footerLegal">Mentions Légales</a>
+              <a href="privacy-policy.html" data-i18n="footerPrivacy">Confidentialité</a>
+              <a href="cookie-policy.html" data-i18n="footerCookies">Cookies</a>
+            </div>
+            <a href="index.html" style="color: #d4a843; text-decoration: none; margin-top: 25px; display: inline-block; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;" data-i18n="navBackHome">Retour à l'accueil</a>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

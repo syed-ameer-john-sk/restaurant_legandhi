@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
     initScrollReveal();
     initTestimonials();
-    initLanguageToggle();
+    initLanguageDropdown();
     initFAQ();
     initLightbox();
     initHeroVideo();
@@ -114,47 +114,25 @@ function initTestimonials() {
 }
 
 // ================================
-// Language Toggle (FR / EN)
+// Language Dropdown Toggle
 // ================================
-function initLanguageToggle() {
-    const lang = localStorage.getItem('gandhi-lang') || 'fr';
-    applyLanguage(lang);
+function initLanguageDropdown() {
+    const dropBtn = document.getElementById('langDropBtn');
+    const dropdown = document.querySelector('.lang-dropdown');
 
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const newLang = btn.dataset.lang;
-            localStorage.setItem('gandhi-lang', newLang);
-            applyLanguage(newLang);
+    if (dropBtn && dropdown) {
+        dropBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdown.classList.toggle('active');
         });
-    });
-}
 
-function applyLanguage(lang) {
-    if (!translations || !translations[lang]) return;
-    const t = translations[lang];
-
-    // Update all elements with data-i18n attribute
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (t[key] !== undefined) {
-            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                el.placeholder = t[key];
-            } else {
-                el.innerHTML = t[key];
+        // Close when clicking outside (but let i18n.js handle data-lang clicks first)
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('active');
             }
-        }
-    });
-
-    // Update active lang button
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.lang === lang);
-    });
-
-    // Update html lang attribute
-    document.documentElement.lang = lang;
-
-    // Trigger event for dynamic components (like opening hours banner)
-    document.dispatchEvent(new Event('languageChanged'));
+        });
+    }
 }
 
 // ================================
@@ -301,10 +279,18 @@ function removeLogoWhiteBackground() {
 // WhatsApp Reservation Redirect
 // ================================
 // ⚠️ CHANGE THIS to the restaurant's WhatsApp number (with country code, no spaces/dashes)
-const WHATSAPP_NUMBER = '33561992103';
+const WHATSAPP_NUMBER = '33643014677';
 
 function handleReservationWhatsApp(event) {
     event.preventDefault();
+    // Consent Check
+    const consent = document.getElementById('resConsent');
+    if (consent && !consent.checked) {
+        const lang = document.documentElement.lang || 'fr';
+        alert(lang === 'fr' ? "Veuillez accepter la politique de confidentialité." : "Please accept the privacy policy.");
+        return;
+    }
+
 
     const name = document.getElementById('resName')?.value.trim() || '';
     const email = document.getElementById('resEmail')?.value.trim() || '';

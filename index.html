@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Le Gandhi – Restaurant Indien à Toulouse | Cuisine Indienne Authentique</title>
+  <title data-i18n="titleHome">Le Gandhi – Restaurant Indien à Toulouse | Cuisine Indienne Authentique</title>
   <meta name="description"
     content="Le Gandhi, restaurant indien authentique à Toulouse. Butter Chicken, Tandoori, Biryani et plus. Réservez votre table au 05 61 99 21 03.">
   <meta name="keywords"
@@ -69,10 +69,10 @@
     "potentialAction": {
       "@type": "SearchAction",
       "target": "https://legandhi-toulouse.fr/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
   }
   </script>
+  <script src="translations.js"></script>
+  <script src="i18n.js"></script>
 </head>
 
 <body>
@@ -90,7 +90,7 @@
   <header class="header" id="header">
     <div class="container">
       <nav class="nav">
-        <a href="index.html" class="nav-logo"><img src="Logo.png" alt="Le Gandhi"></a>
+        <a href="index.html" class="nav-logo"><img src="Logo_transparent.png" alt="Le Gandhi"></a>
 
         <ul class="nav-links">
           <li><a href="index.html" class="active" data-i18n="navHome">Accueil</a></li>
@@ -104,12 +104,33 @@
           <div class="nav-social">
             <a href="https://www.instagram.com/legandhi.toulouse/" target="_blank" rel="noopener"
               aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@resutaurantlegandhi" target="_blank" rel="noopener"
+              aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
             <a href="https://www.facebook.com/legandhi.toulouse/" target="_blank" rel="noopener"
               aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
           </div>
-          <div class="lang-toggle">
-            <button class="lang-btn active" data-lang="fr">FR</button>
-            <button class="lang-btn" data-lang="en">EN</button>
+          <div class="lang-dropdown">
+            <button class="lang-dropbtn" id="langDropBtn">
+              <span id="currentLang">FR</span> <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="lang-dropdown-content" id="langOptions">
+              <a href="#" data-lang="fr">Français</a>
+              <a href="#" data-lang="en">English</a>
+              <a href="#" data-lang="es">Español</a>
+              <a href="#" data-lang="de">Deutsch</a>
+              <a href="#" data-lang="it">Italiano</a>
+              <a href="#" data-lang="cs">Čeština</a>
+              <a href="#" data-lang="ru">Русский</a>
+              <a href="#" data-lang="hu">Magyar</a>
+              <a href="#" data-lang="sk">Slovensky</a>
+              <a href="#" data-lang="nl">Nederlands</a>
+              <a href="#" data-lang="tr">Türkçe</a>
+              <a href="#" data-lang="pl">Polski</a>
+              <a href="#" data-lang="uk">Українська</a>
+              <a href="#" data-lang="pt">Português</a>
+              <a href="#" data-lang="hr">Hrvatski</a>
+              <a href="#" data-lang="ro">Română</a>
+            </div>
           </div>
           <a href="contact.html" class="btn btn-primary btn-sm" data-i18n="navReserve">Réserver</a>
         </div>
@@ -132,12 +153,35 @@
     </button>
     <div class="hero-content">
       <p class="hero-subtitle" data-i18n="heroSubtitle">Restaurant Indien Authentique à Toulouse</p>
-      <h1 class="hero-title" data-i18n="heroTitle">Le Gandhi – Restaurant <em>Indien</em></h1>
+      <h1 class="hero-title" data-i18n="heroTitle">Le Gandhi Toulouse – Restaurant <em>Indien</em></h1>
       <p class="hero-description" data-i18n="heroDesc">Une cuisine indienne authentique préparée avec des épices
         traditionnelles et des ingrédients frais au cœur de Toulouse.</p>
       <div class="hero-cta">
         <a href="contact.html" class="btn btn-primary" data-i18n="heroCta1">Réserver une Table</a>
         <a href="menu.html" class="btn btn-outline" data-i18n="heroCta2">Voir le Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DELIVERY PARTNERS ========== -->
+  <section class="delivery-partners reveal">
+    <div class="container">
+      <div class="delivery-grid">
+        <div class="delivery-info">
+          <h2 data-i18n="deliveryTitle">Livraison à Domicile</h2>
+          <p data-i18n="deliveryDesc">Retrouvez-nous sur vos plateformes préférées</p>
+        </div>
+        <div class="delivery-logos">
+          <div class="delivery-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Uber_Eats_2020_logo.svg" alt="Uber Eats" style="height:40px;">
+          </div>
+          <div class="delivery-logo">
+            <img src="Deliveroo logo.png" alt="Deliveroo">
+          </div>
+          <div class="delivery-logo">
+            <img src="Just_Eat.png" alt="Just Eat">
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -152,39 +196,46 @@
           indiennes authentiques et des techniques de cuisson traditionnelles.</p>
       </div>
       <div class="specialties-grid">
-        <div class="specialty-card reveal reveal-delay-1">
+        <div class="specialty-card featured reveal reveal-delay-1">
           <div class="specialty-card-img-wrapper">
-            <img src="images/butter-chicken.png" alt="Butter Chicken" class="specialty-card-img">
+            <span class="badge-new" data-i18n="badgeNew">NEW</span>
+            <img src="Imag2/chicken_shawarma_roll.png" alt="Chicken Shawarma" class="specialty-card-img">
           </div>
           <div class="specialty-card-body">
-            <h3 class="specialty-card-title" data-i18n="specButterChicken">Butter Chicken</h3>
-            <p class="specialty-card-desc" data-i18n="specButterChickenDesc">Poulet tendre cuit dans une sauce curry
-              crémeuse à la tomate.</p>
+            <h3 class="specialty-card-title" data-i18n="specChickenShawarma">Chicken Shawarma</h3>
+            <p class="specialty-card-desc" data-i18n="specChickenShawarmaDesc">Spécialité street food : poulet émincé sauté avec œufs, légumes et épices indiennes.</p>
           </div>
         </div>
         <div class="specialty-card reveal reveal-delay-2">
           <div class="specialty-card-img-wrapper">
-            <img src="images/tandoori-chicken.png" alt="Poulet Tandoori" class="specialty-card-img">
+            <img src="Imag2/LE-GANDHI-138060436-4814653815271788-8062307753335544318-n-jpg.jpg" alt="Butter Chicken" class="specialty-card-img">
           </div>
           <div class="specialty-card-body">
-            <h3 class="specialty-card-title" data-i18n="specTandoori">Poulet Tandoori</h3>
-            <p class="specialty-card-desc" data-i18n="specTandooriDesc">Poulet mariné au yaourt et aux épices, grillé au
-              four tandoor.</p>
+            <h3 class="specialty-card-title" data-i18n="specButterChicken">Assortiment d'Entrées</h3>
+            <p class="specialty-card-desc" data-i18n="specButterChickenDesc">Sélection de nos meilleures entrées : rouleaux croustillants, poulet grillé et accompagnements maison.</p>
           </div>
         </div>
         <div class="specialty-card reveal reveal-delay-3">
           <div class="specialty-card-img-wrapper">
-            <img src="images/lamb-curry.png" alt="Agneau Curry" class="specialty-card-img">
+            <img src="Imag2/LE-GANDHI-109991454-4011347122269132-2107631064428282406-n-jpg.jpg" alt="Poulet Tandoori" class="specialty-card-img">
           </div>
           <div class="specialty-card-body">
-            <h3 class="specialty-card-title" data-i18n="specLamb">Agneau Curry</h3>
-            <p class="specialty-card-desc" data-i18n="specLambDesc">Agneau mijoté lentement dans une sauce curry riche
-              et savoureuse.</p>
+            <h3 class="specialty-card-title" data-i18n="specTandoori">Grand Thali</h3>
+            <p class="specialty-card-desc" data-i18n="specTandooriDesc">Plateau complet servi avec riz au safran, curries variés, raïta et condiments traditionnels.</p>
           </div>
         </div>
         <div class="specialty-card reveal reveal-delay-4">
           <div class="specialty-card-img-wrapper">
-            <img src="images/biryani.png" alt="Biryani Indien" class="specialty-card-img">
+            <img src="Imag2/LE-GANDHI-240601826-5898133430257149-3916952606868229640-n-jpg.jpg" alt="Agneau Curry" class="specialty-card-img">
+          </div>
+          <div class="specialty-card-body">
+            <h3 class="specialty-card-title" data-i18n="specLamb">Plateau Royal</h3>
+            <p class="specialty-card-desc" data-i18n="specLambDesc">Feuille de bananier garnie de samosas, fruits de mer grillés, rouleaux et spécialités du chef.</p>
+          </div>
+        </div>
+        <div class="specialty-card reveal reveal-delay-5">
+          <div class="specialty-card-img-wrapper">
+            <img src="Imag2/LE-GANDHI-74582975-3156760727727780-5399704120858771456-n-jpg.jpg" alt="Biryani Indien" class="specialty-card-img">
           </div>
           <div class="specialty-card-body">
             <h3 class="specialty-card-title" data-i18n="specBiryani">Biryani Indien</h3>
@@ -201,7 +252,7 @@
     <div class="container">
       <div class="story-grid">
         <div class="story-image reveal">
-          <img src="images/restaurant-interior.png" alt="Le Gandhi Interior">
+          <img src="ai-interior.png" alt="Le Gandhi Interior">
         </div>
         <div class="story-content reveal reveal-delay-2">
           <span class="section-label" data-i18n="storyLabel">Notre Histoire</span>
@@ -317,35 +368,35 @@
 
       <div class="insta-grid reveal">
         <div class="insta-grid-item">
-          <img src="images/butter-chicken.png" alt="Butter Chicken">
+          <img src="Imag2/LE-GANDHI-138060436-4814653815271788-8062307753335544318-n-jpg.jpg" alt="Butter Chicken">
           <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
         </div>
         <div class="insta-grid-item">
-          <img src="images/tandoori-chicken.png" alt="Tandoori Chicken">
+          <img src="Imag2/LE-GANDHI-109991454-4011347122269132-2107631064428282406-n-jpg.jpg" alt="Tandoori Chicken">
           <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
         </div>
         <div class="insta-grid-item">
-          <img src="images/naan-bread.png" alt="Naan Bread">
+          <img src="Imag2/LE-GANDHI-240601826-5898133430257149-3916952606868229640-n-jpg.jpg" alt="Agneau Curry">
           <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
         </div>
         <div class="insta-grid-item">
-          <img src="images/samosa.png" alt="Samosa">
+          <img src="Imag2/LE-GANDHI-74582975-3156760727727780-5399704120858771456-n-jpg.jpg" alt="Biryani">
           <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
         </div>
         <div class="insta-grid-item">
-          <img src="images/thali-platter.png" alt="Thali Platter">
+          <img src="Imag2/LE-GANDHI-76676147-3156760707727782-5985087517395779584-n-jpg.jpg" alt="Kothu Parotta">
           <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
         </div>
         <div class="insta-grid-item">
-          <img src="images/chicken-tikka.png" alt="Chicken Tikka">
+          <img src="Imag2/LE-GANDHI-215473360-5672090856194742-1563197714858740552-n-jpg.jpg" alt="Le Gandhi Specialties">
           <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
         </div>
         <div class="insta-grid-item">
-          <img src="images/palak-paneer.png" alt="Palak Paneer">
+          <img src="Imag2/LE-GANDHI-68455086-2887206064683249-248967863895851008-n-jpg.jpg" alt="Indian Cuisine">
           <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
         </div>
         <div class="insta-grid-item">
-          <img src="images/biryani.png" alt="Biryani">
+          <img src="Imag2/LE-GANDHI-80201880-3269973889739796-1026236938790633472-n-jpg.jpg" alt="Le Gandhi Restaurant">
           <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
         </div>
       </div>
@@ -402,15 +453,17 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="index.html" class="nav-logo"><img src="Logo.png" alt="Le Gandhi"></a>
+          <a href="index.html" class="nav-logo"><img src="Logo_transparent.png" alt="Le Gandhi"></a>
           <p data-i18n="footerDesc">L'essence authentique de l'héritage indien à Toulouse. L'excellence dans chaque
             plat, la tradition dans chaque épice.</p>
           <div class="footer-social">
             <a href="https://www.instagram.com/legandhi.toulouse/" target="_blank" rel="noopener"
               aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@resutaurantlegandhi" target="_blank" rel="noopener"
+              aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
             <a href="https://www.facebook.com/legandhi.toulouse/" target="_blank" rel="noopener"
               aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
+            
           </div>
         </div>
 
@@ -436,18 +489,22 @@
           <p data-i18n="footerNewsletterDesc">Abonnez-vous pour recevoir nos offres spéciales.</p>
           <form class="newsletter-form" onsubmit="event.preventDefault();">
             <input type="email" class="newsletter-input" data-i18n="footerNewsletterPlaceholder"
-              placeholder="Votre email">
+              placeholder="Votre email" data-i18n-placeholder="newsletterPlaceholder">
             <button type="submit" class="btn btn-gold btn-sm" data-i18n="footerNewsletterBtn">OK</button>
-          </form>
+                              <div style="display:flex; align-items:flex-start; gap:8px; margin-top:12px; width:100%;">
+                        <input type="checkbox" id="newsConsent" style="margin-top:2px; width:14px; height:14px; accent-color:var(--color-gold);" required>
+                        <label for="newsConsent" style="font-size:0.7rem; color:#b8a99a; cursor:pointer; line-height:1.4;" data-i18n="newsletterConsent">J'accepte de recevoir des offres.</label>
+                    </div>
+                    </form>
         </div>
       </div>
 
       <div class="footer-bottom">
         <p data-i18n="footerCopyright">© 2025 Le Gandhi Toulouse. Tous droits réservés.</p>
         <div class="footer-legal">
-          <a href="#" data-i18n="footerLegal">Mentions Légales</a>
-          <a href="#" data-i18n="footerPrivacy">Confidentialité</a>
-          <a href="#" data-i18n="footerCookies">Cookies</a>
+          <a href="legal-notice.html" data-i18n="footerLegal">Mentions Légales</a>
+          <a href="privacy-policy.html" data-i18n="footerPrivacy">Confidentialité</a>
+          <a href="cookie-policy.html" data-i18n="footerCookies">Cookies</a>
         </div>
       </div>
     </div>
@@ -455,15 +512,19 @@
 
   <!-- Floating Action Buttons -->
   <div class="floating-actions">
-    <a href="https://wa.me/33780738678" class="fab-btn fab-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <a href="https://wa.me/33643014677" class="fab-btn fab-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">
       <i class="fab fa-whatsapp"></i>
     </a>
     <a href="tel:+33780738678" class="fab-btn fab-call" aria-label="Appeler">
       <i class="fas fa-phone-alt"></i>
     </a>
-  </div>
+      <a href="https://www.tiktok.com/@resutaurantlegandhi" class="fab-btn fab-tiktok" target="_blank" rel="noopener" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.73a4.85 4.85 0 0 1-1.01-.04z"/>
+      </svg>
+    </a>
+    </div>
 
-  <script src="translations.js"></script>
   <script src="main.js"></script>
 </body>
 

@@ -4,11 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu – Le Gandhi | Restaurant Indien à Toulouse</title>
+    <title data-i18n="titleMenu">Menu – Le Gandhi | Restaurant Indien à Toulouse</title>
     <meta name="description"
         content="Découvrez le menu du restaurant Le Gandhi à Toulouse. Entrées, Tandoori, Curries, Biryani, plats végétariens, desserts et boissons.">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="translations.js"></script>
+    <script src="i18n.js"></script>
 </head>
 
 <body>
@@ -26,7 +28,7 @@
     <header class="header" id="header">
         <div class="container">
             <nav class="nav">
-                <a href="index.html" class="nav-logo"><img src="Logo.png" alt="Le Gandhi"></a>
+                <a href="index.html" class="nav-logo"><img src="Logo_transparent.png" alt="Le Gandhi"></a>
                 <ul class="nav-links">
                     <li><a href="index.html" data-i18n="navHome">Accueil</a></li>
                     <li><a href="menu.html" class="active" data-i18n="navMenu">Menu</a></li>
@@ -38,368 +40,1146 @@
                     <div class="nav-social">
                         <a href="https://www.instagram.com/legandhi.toulouse/" target="_blank" rel="noopener"
                             aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@resutaurantlegandhi" target="_blank" rel="noopener"
+                            aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                         <a href="https://www.facebook.com/legandhi.toulouse/" target="_blank" rel="noopener"
                             aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     </div>
-                    <div class="lang-toggle">
-                        <button class="lang-btn active" data-lang="fr">FR</button>
-                        <button class="lang-btn" data-lang="en">EN</button>
-                    </div>
-                    <a href="contact.html" class="btn btn-primary btn-sm" data-i18n="navReserve">Réserver</a>
-                </div>
-                <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
-            </nav>
+          <div class="lang-dropdown">
+            <button class="lang-dropbtn" id="langDropBtn">
+              <span id="currentLang">FR</span> <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="lang-dropdown-content" id="langOptions">
+              <a href="#" data-lang="fr">Français</a>
+              <a href="#" data-lang="en">English</a>
+              <a href="#" data-lang="es">Español</a>
+              <a href="#" data-lang="de">Deutsch</a>
+              <a href="#" data-lang="it">Italiano</a>
+              <a href="#" data-lang="cs">Čeština</a>
+              <a href="#" data-lang="ru">Русский</a>
+              <a href="#" data-lang="hu">Magyar</a>
+              <a href="#" data-lang="sk">Slovensky</a>
+              <a href="#" data-lang="nl">Nederlands</a>
+              <a href="#" data-lang="tr">Türkçe</a>
+              <a href="#" data-lang="pl">Polski</a>
+              <a href="#" data-lang="uk">Українська</a>
+              <a href="#" data-lang="pt">Português</a>
+              <a href="#" data-lang="hr">Hrvatski</a>
+              <a href="#" data-lang="ro">Română</a>
+            </div>
+          </div>
+          <a href="contact.html" class="btn btn-primary btn-sm" data-i18n="navReserve">Réserver</a>
         </div>
-    </header>
+        <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </nav>
+    </div>
+  </header>
 
-    <!-- PAGE HERO -->
-    <section class="page-hero">
-        <div class="container">
-            <span class="section-label" data-i18n="menuPreviewLabel">Notre Carte</span>
-            <h1 class="section-title" data-i18n="menuPageTitle">Notre Menu</h1>
-            <p class="section-desc" data-i18n="menuPageDesc">Explorez la diversité des saveurs indiennes, des entrées
-                classiques aux desserts exotiques.</p>
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label" data-i18n="menuPreviewLabel">Notre Carte</span>
+      <h1 class="section-title" data-i18n="menuPageTitle">Notre Menu</h1>
+      <p class="section-desc" data-i18n="menuPageDesc">Tous nos plats sont préparés à la commande en 20 minutes environ.</p>
+      
+
+    </div>
+  </section>
+
+  <!-- MENU CONTENT -->
+  <section class="section section-dark">
+    <div class="container">
+      <!-- Nos Entrées -->
+      <div class="menu-category reveal">
+        <button class="menu-category-toggle">
+          <h2 class="menu-category-title" data-i18n="menuEntrees">Nos Entrées</h2>
+          <span class="menu-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_entrees_dall_soup_name">Dall Soup</h4>
+              <p data-i18n="item_entrees_dall_soup_desc">Indian lentil soup</p>
+            </div>
+            <span class="menu-item-price">3,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_entrees_soupe_maison_name">Soupe Maison</h4>
+              <p data-i18n="item_entrees_soupe_maison_desc">Spiced soup based on lamb bone marrow, coriander, chili, cloves</p>
+            </div>
+            <span class="menu-item-price">4,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_entrees_raita_name">Raita</h4>
+              <p data-i18n="item_entrees_raita_desc">Yogurt with cucumber</p>
+            </div>
+            <span class="menu-item-price">3,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_entrees_salade_aux_crevettes_name">Salade aux Crevettes</h4>
+              <p data-i18n="item_entrees_salade_aux_crevettes_desc">Shrimp cooked in a mango-based sauce</p>
+            </div>
+            <span class="menu-item-price">4,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_entrees_salade_composée_name">Salade Composée</h4>
+              <p data-i18n="item_entrees_salade_composée_desc">Cucumber, tomato, olive oil, lightly sweetened cumin</p>
+            </div>
+            <span class="menu-item-price">4,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_entrees_oignon_bhaji_name">Oignon Bhaji</h4>
+              <p data-i18n="item_entrees_oignon_bhaji_desc">Onion fritter</p>
+            </div>
+            <span class="menu-item-price">3,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_entrees_aubergines_bhaji_name">Aubergines Bhaji</h4>
+              <p data-i18n="item_entrees_aubergines_bhaji_desc">Eggplant fritter</p>
+            </div>
+            <span class="menu-item-price">4,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_entrees_samusas_viande_name">Samusas Viande</h4>
+              <p data-i18n="item_entrees_samusas_viande_desc">Meat-filled pastry turnovers</p>
+            </div>
+            <span class="menu-item-price">4,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_entrees_samusas_légumes_name">Samusas Légumes</h4>
+              <p data-i18n="item_entrees_samusas_légumes_desc">Vegetable-filled pastry turnovers</p>
+            </div>
+            <span class="menu-item-price">4,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_entrees_shami_kebab_name">Shami Kebab</h4>
+              <p data-i18n="item_entrees_shami_kebab_desc">Minced meat flavored with onions and lentils, coated in a cooked egg</p>
+            </div>
+            <span class="menu-item-price">4,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_entrees_puri_aux_crevettes_name">Puri aux Crevettes</h4>
+              <p data-i18n="item_entrees_puri_aux_crevettes_desc">Stuffed shrimp served with thin Indian bread</p>
+            </div>
+            <span class="menu-item-price">7,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_entrees_gambas_papillon_name">Gambas Papillon</h4>
+              <p data-i18n="item_entrees_gambas_papillon_desc">Grilled shrimp, Indian style</p>
+            </div>
+            <span class="menu-item-price">8,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_entrees_poulet_tandoori_entrée_name">Poulet Tandoori (entrée)</h4>
+              <p data-i18n="item_entrees_poulet_tandoori_entrée_desc">Chicken thigh marinated in tandoori sauce, wood-fired</p>
+            </div>
+            <span class="menu-item-price">5,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_entrees_poulet_tikka_entrée_name">Poulet Tikka (entrée)</h4>
+              <p data-i18n="item_entrees_poulet_tikka_entrée_desc">Marinated and grilled chicken skewers</p>
+            </div>
+            <span class="menu-item-price">6,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_entrees_agneau_tikka_entrée_name">Agneau Tikka (entrée)</h4>
+              <p data-i18n="item_entrees_agneau_tikka_entrée_desc">Marinated and grilled lamb skewers</p>
+            </div>
+            <span class="menu-item-price">7,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_entrees_shish_kebab_name">Shish Kebab</h4>
+              <p data-i18n="item_entrees_shish_kebab_desc">Marinated and grilled meat skewers</p>
+            </div>
+            <span class="menu-item-price">6,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_entrees_gambas_tandoori_name">Gambas Tandoori</h4>
+              <p data-i18n="item_entrees_gambas_tandoori_desc">Marinated and grilled shrimp</p>
+            </div>
+            <span class="menu-item-price">10,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_entrees_foie_gras_tandoori_name">Foie Gras Tandoori</h4>
+              <p data-i18n="item_entrees_foie_gras_tandoori_desc">Marinated and grilled foie gras</p>
+            </div>
+            <span class="menu-item-price">12,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_entrees_végétable_roll_2_pièces_100_végétarien_name">Végétable Roll (2 pièces) – 100% Végétarien</h4>
+              <p data-i18n="item_entrees_végétable_roll_2_pièces_100_végétarien_desc">Breaded stick of soy bean curry and potatoes – lightly spiced</p>
+            </div>
+            <span class="menu-item-price">4,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_entrees_mutton_roll_2_pièces_name">Mutton Roll (2 pièces)</h4>
+              <p data-i18n="item_entrees_mutton_roll_2_pièces_desc">Breaded stick of lamb curry and potatoes – lightly spiced</p>
+            </div>
+            <span class="menu-item-price">4,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_entrees_assortiment_dentrées_name">Assortiment d'Entrées</h4>
+              <p data-i18n="item_entrees_assortiment_dentrées_desc">Onion bhaji + shami kebab + eggplant bhaji + meat and vegetable samosas</p>
+            </div>
+            <span class="menu-item-price">10,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_entrees_assortiment_dentrées_royales_name">Assortiment d'Entrées Royales</h4>
+              <p data-i18n="item_entrees_assortiment_dentrées_royales_desc">Tandoori foie gras + tandoori shrimp + chicken tikka + meat and vegetable samosas + onion bhaji + eggplant bhaji</p>
+            </div>
+            <span class="menu-item-price">18,50 €</span>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- MENU CONTENT -->
-    <section class="section section-dark">
-        <div class="container">
-
-            <!-- Entrées -->
-            <div class="menu-category reveal">
-                <button class="menu-category-toggle">
-                    <h2 class="menu-category-title" data-i18n="menuEntrees">Entrées</h2>
-                    <span class="menu-toggle-icon"><i class="fas fa-chevron-down"></i></span>
-                </button>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Samosa (2 pcs)</h4>
-                            <p>Beignets croustillants farcis aux pommes de terre épicées</p>
-                        </div>
-                        <span class="menu-item-price">6,50 €</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Pakora</h4>
-                            <p>Beignets de légumes à la farine de pois chiche</p>
-                        </div>
-                        <span class="menu-item-price">7,00 €</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Soupe de Lentilles</h4>
-                            <p>Soupe crémeuse de lentilles corail aux épices</p>
-                        </div>
-                        <span class="menu-item-price">6,00 €</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Aloo Tikki</h4>
-                            <p>Galettes de pommes de terre croustillantes aux herbes</p>
-                        </div>
-                        <span class="menu-item-price">6,50 €</span>
-                    </div>
-                </div>
+      <!-- Nos Spécialités Grillées -->
+      <div class="menu-category reveal">
+        <button class="menu-category-toggle">
+          <h2 class="menu-category-title" data-i18n="menuGrilled">Nos Spécialités Grillées</h2>
+          <span class="menu-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_grillees_assortiment_tandoori_name">Assortiment Tandoori</h4>
+              <p data-i18n="item_grillees_assortiment_tandoori_desc">¼ de poulet tandoori + poulet tikka + agneau tikka + shish kebab</p>
             </div>
-
-            <!-- Tandoori -->
-            <div class="menu-category reveal">
-                <button class="menu-category-toggle">
-                    <h2 class="menu-category-title" data-i18n="menuTandoori">Tandoori & Grillades</h2>
-                    <span class="menu-toggle-icon"><i class="fas fa-chevron-down"></i></span>
-                </button>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Poulet Tandoori</h4>
-                            <p>Poulet mariné aux épices, grillé au four tandoor</p>
-                        </div>
-                        <span class="menu-item-price">14,50 €</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Chicken Tikka</h4>
-                            <p>Morceaux de poulet désossé marinés et grillés</p>
-                        </div>
-                        <span class="menu-item-price">13,50 €</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Seekh Kebab</h4>
-                            <p>Brochettes d'agneau haché aux épices</p>
-                        </div>
-                        <span class="menu-item-price">14,00 €</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Crevettes Tandoori</h4>
-                            <p>Crevettes marinées et grillées au four tandoor</p>
-                        </div>
-                        <span class="menu-item-price">16,00 €</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Curries -->
-            <div class="menu-category reveal">
-                <button class="menu-category-toggle">
-                    <h2 class="menu-category-title" data-i18n="menuCurries">Curries Classiques</h2>
-                    <span class="menu-toggle-icon"><i class="fas fa-chevron-down"></i></span>
-                </button>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Butter Chicken</h4>
-                            <p>Poulet tendre dans une sauce tomate crémeuse au beurre</p>
-                        </div>
-                        <span class="menu-item-price">15,00 €</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Chicken Tikka Masala</h4>
-                            <p>Poulet grillé dans une sauce masala onctueuse</p>
-                        </div>
-                        <span class="menu-item-price">15,00 €</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Agneau Curry</h4>
-                            <p>Agneau mijoté dans une sauce curry riche</p>
-                        </div>
-                        <span class="menu-item-price">16,50 €</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Rogan Josh</h4>
-                            <p>Agneau braisé aux épices du Kashmir</p>
-                        </div>
-                        <span class="menu-item-price">16,50 €</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Crevettes Masala</h4>
-                            <p>Crevettes dans une sauce aux oignons et tomates</p>
-                        </div>
-                        <span class="menu-item-price">17,00 €</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Vindaloo</h4>
-                            <p>Curry relevé — poulet ou agneau au choix</p>
-                        </div>
-                        <span class="menu-item-price">15,50 €</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Biryani -->
-            <div class="menu-category reveal">
-                <button class="menu-category-toggle">
-                    <h2 class="menu-category-title" data-i18n="menuBiryani">Biryani & Riz</h2>
-                    <span class="menu-toggle-icon"><i class="fas fa-chevron-down"></i></span>
-                </button>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Chicken Biryani</h4>
-                            <p>Riz basmati parfumé avec poulet tendre et épices</p>
-                        </div>
-                        <span class="menu-item-price">14,50 €</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Lamb Biryani</h4>
-                            <p>Riz basmati aux morceaux d'agneau et safran</p>
-                        </div>
-                        <span class="menu-item-price">16,00 €</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Vegetable Biryani</h4>
-                            <p>Riz parfumé aux légumes de saison</p>
-                        </div>
-                        <span class="menu-item-price">12,50 €</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Jeera Rice</h4>
-                            <p>Riz basmati au cumin</p>
-                        </div>
-                        <span class="menu-item-price">4,50 €</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Végétarien -->
-            <div class="menu-category reveal">
-                <button class="menu-category-toggle">
-                    <h2 class="menu-category-title" data-i18n="menuVeg">Végétarien</h2>
-                    <span class="menu-toggle-icon"><i class="fas fa-chevron-down"></i></span>
-                </button>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Palak Paneer</h4>
-                            <p>Fromage frais dans une sauce crémeuse aux épinards</p>
-                        </div>
-                        <span class="menu-item-price">13,00 €</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Dal Makhani</h4>
-                            <p>Lentilles noires mijotées au beurre et à la crème</p>
-                        </div>
-                        <span class="menu-item-price">12,00 €</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Chana Masala</h4>
-                            <p>Pois chiches dans une sauce épicée aux tomates</p>
-                        </div>
-                        <span class="menu-item-price">12,00 €</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Aloo Gobi</h4>
-                            <p>Pommes de terre et chou-fleur aux épices</p>
-                        </div>
-                        <span class="menu-item-price">11,50 €</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Accompagnements -->
-            <div class="menu-category reveal">
-                <button class="menu-category-toggle">
-                    <h2 class="menu-category-title" data-i18n="menuSides">Accompagnements</h2>
-                    <span class="menu-toggle-icon"><i class="fas fa-chevron-down"></i></span>
-                </button>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Naan Nature</h4>
-                            <p>Pain traditionnel cuit au four tandoor</p>
-                        </div>
-                        <span class="menu-item-price">3,00 €</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Naan au Fromage</h4>
-                            <p>Naan garni de fromage fondant</p>
-                        </div>
-                        <span class="menu-item-price">4,00 €</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Garlic Naan</h4>
-                            <p>Naan à l'ail et au beurre</p>
-                        </div>
-                        <span class="menu-item-price">3,50 €</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Raita</h4>
-                            <p>Yaourt frais au concombre et menthe</p>
-                        </div>
-                        <span class="menu-item-price">3,00 €</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Desserts -->
-            <div class="menu-category reveal">
-                <button class="menu-category-toggle">
-                    <h2 class="menu-category-title" data-i18n="menuDesserts">Desserts</h2>
-                    <span class="menu-toggle-icon"><i class="fas fa-chevron-down"></i></span>
-                </button>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Gulab Jamun</h4>
-                            <p>Beignets de lait dans un sirop de rose</p>
-                        </div>
-                        <span class="menu-item-price">6,00 €</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Kulfi</h4>
-                            <p>Glace traditionnelle indienne à la pistache</p>
-                        </div>
-                        <span class="menu-item-price">5,50 €</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Ras Malai</h4>
-                            <p>Douceur de fromage frais dans une crème au safran</p>
-                        </div>
-                        <span class="menu-item-price">6,50 €</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Kheer</h4>
-                            <p>Riz au lait aux cardamome et pistaches</p>
-                        </div>
-                        <span class="menu-item-price">5,50 €</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Boissons -->
-            <div class="menu-category reveal">
-                <button class="menu-category-toggle">
-                    <h2 class="menu-category-title" data-i18n="menuDrinks">Boissons</h2>
-                    <span class="menu-toggle-icon"><i class="fas fa-chevron-down"></i></span>
-                </button>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Lassi Mangue</h4>
-                            <p>Boisson au yaourt et mangue fraîche</p>
-                        </div>
-                        <span class="menu-item-price">5,00 €</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Lassi Nature</h4>
-                            <p>Boisson traditionnelle au yaourt</p>
-                        </div>
-                        <span class="menu-item-price">4,50 €</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Chai Masala</h4>
-                            <p>Thé noir aux épices traditionnelles</p>
-                        </div>
-                        <span class="menu-item-price">3,50 €</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info">
-                            <h4>Kingfisher Beer</h4>
-                            <p>Bière indienne premium</p>
-                        </div>
-                        <span class="menu-item-price">5,50 €</span>
-                    </div>
-                </div>
-            </div>
-
+            <span class="menu-item-price">25,00 €</span>
+          </div>
         </div>
-    </section>
+      </div>
+
+      <!-- Spécialités Viande : Agneau -->
+      <div class="menu-category reveal">
+        <button class="menu-category-toggle">
+          <h2 class="menu-category-title" data-i18n="menuLamb">Spécialités Viande : Agneau</h2>
+          <span class="menu-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_agneau_agneau_tikka_name">Agneau Tikka</h4>
+              <p data-i18n="item_agneau_agneau_tikka_desc">Marinated and grilled lamb skewers</p>
+            </div>
+            <span class="menu-item-price">12,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_agneau_agneau_curry_name">Agneau Curry</h4>
+              <p data-i18n="item_agneau_agneau_curry_desc">Lamb cooked in a curry sauce</p>
+            </div>
+            <span class="menu-item-price">11,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_agneau_agneau_nepal_name">Agneau Nepal</h4>
+              <p data-i18n="item_agneau_agneau_nepal_desc">Lamb cooked in a fragrant sauce with pistachios, almonds, papaya, mango and lychees</p>
+            </div>
+            <span class="menu-item-price">12,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_agneau_agneau_rongojosh_name">Agneau Rongojosh</h4>
+              <p data-i18n="item_agneau_agneau_rongojosh_desc">Lamb cooked in a curry sauce with tomatoes, peppers, lemon and saffron – mildly spiced</p>
+            </div>
+            <span class="menu-item-price">12,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_agneau_agneau_biriyani_name">Agneau Biriyani</h4>
+              <p data-i18n="item_agneau_agneau_biriyani_desc">Lamb cooked with rice, garlic, onion, saffron, pistachios and almonds – served in a clay pot covered with Indian bread</p>
+            </div>
+            <span class="menu-item-price">16,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_agneau_agneau_kurma_name">Agneau Kurma</h4>
+              <p data-i18n="item_agneau_agneau_kurma_desc">Lamb cooked in a sauce with pistachios, almonds, onions, cream and yogurt – lightly sweetened</p>
+            </div>
+            <span class="menu-item-price">12,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_agneau_agneau_jalfrezi_name">Agneau Jalfrezi</h4>
+              <p data-i18n="item_agneau_agneau_jalfrezi_desc">Lamb cooked with chili and coconut milk</p>
+            </div>
+            <span class="menu-item-price">12,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_agneau_agneau_madras_name">Agneau Madras</h4>
+              <p data-i18n="item_agneau_agneau_madras_desc">Lamb cooked in a spicy sauce</p>
+            </div>
+            <span class="menu-item-price">11,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_agneau_agneau_vindaloo_name">Agneau Vindaloo</h4>
+              <p data-i18n="item_agneau_agneau_vindaloo_desc">Lamb cooked in a very spicy sauce</p>
+            </div>
+            <span class="menu-item-price">12,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_agneau_agneau_tikka_masala_name">Agneau Tikka Masala</h4>
+              <p data-i18n="item_agneau_agneau_tikka_masala_desc">Lamb skewers cooked in a fragrant almond and pistachio sauce</p>
+            </div>
+            <span class="menu-item-price">12,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_agneau_agneau_dall_plat_dansak_name">Agneau Dall (Plat Dansak)</h4>
+              <p data-i18n="item_agneau_agneau_dall_plat_dansak_desc">Lamb cooked in a lightly sweet and spicy lemon and lentil sauce</p>
+            </div>
+            <span class="menu-item-price">12,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_agneau_agneau_karai_name">Agneau Karai</h4>
+              <p data-i18n="item_agneau_agneau_karai_desc">Lamb served with a 'Karai' dish including lemon, tomatoes and herbs</p>
+            </div>
+            <span class="menu-item-price">12,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_agneau_agneau_dopiaza_name">Agneau Dopiaza</h4>
+              <p data-i18n="item_agneau_agneau_dopiaza_desc">Agneau cuit dans une sauce douce avec double oignon</p>
+            </div>
+            <span class="menu-item-price">13,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_agneau_agneau_passanda_name">Agneau Passanda</h4>
+              <p data-i18n="item_agneau_agneau_passanda_desc">Lamb cooked with cashews and almonds in yogurt</p>
+            </div>
+            <span class="menu-item-price">13,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_agneau_agneau_patia_name">Agneau Patia</h4>
+              <p data-i18n="item_agneau_agneau_patia_desc">Lamb cooked with coconut – lightly spiced and sweet and salty</p>
+            </div>
+            <span class="menu-item-price">12,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_agneau_agneau_balti_name">Agneau Balti</h4>
+              <p data-i18n="item_agneau_agneau_balti_desc">Lamb served in a Balti (bucket) – very mild dish</p>
+            </div>
+            <span class="menu-item-price">12,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_agneau_agneau_aux_épinards_name">Agneau aux Épinards</h4>
+              <p data-i18n="item_agneau_agneau_aux_épinards_desc">Lamb cooked with spinach, Indian style</p>
+            </div>
+            <span class="menu-item-price">12,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_agneau_agneau_phall_name">Agneau Phall</h4>
+              <p data-i18n="item_agneau_agneau_phall_desc">Extremely spicy sauce</p>
+            </div>
+            <span class="menu-item-price">13,00 €</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Spécialités Poulet & Poulet Tikka -->
+      <div class="menu-category reveal">
+        <button class="menu-category-toggle">
+          <h2 class="menu-category-title" data-i18n="menuChicken">Spécialités Poulet & Poulet Tikka</h2>
+          <span class="menu-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="menu-items">
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="badge-new" style="position:relative; top:0; right:0; display:inline-block; margin-bottom:8px;" data-i18n="badgeNew">NEW</span>
+              <h4 data-i18n="specChickenShawarma">Chicken Shawarma</h4>
+              <p data-i18n="specChickenShawarmaDesc">Spécialité street food : poulet émincé sauté avec œufs, légumes et épices indiennes.</p>
+            </div>
+            <span class="menu-item-price">12,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poulet_poulet_tandoori_name">Poulet Tandoori</h4>
+              <p data-i18n="item_poulet_poulet_tandoori_desc">Cuisse de poulet marinée et grillée</p>
+            </div>
+            <span class="menu-item-price">12,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poulet_poulet_tikka_name">Poulet Tikka</h4>
+              <p data-i18n="item_poulet_poulet_tikka_desc">Marinated and grilled chicken skewers</p>
+            </div>
+            <span class="menu-item-price">11,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poulet_poulet_curry_name">Poulet Curry</h4>
+              <p data-i18n="item_poulet_poulet_curry_desc">Chicken cooked in a curry sauce</p>
+            </div>
+            <span class="menu-item-price">10,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poulet_poulet_tikka_masala_name">Poulet Tikka Masala</h4>
+              <p data-i18n="item_poulet_poulet_tikka_masala_desc">Chicken tikka pieces cooked in a fragrant almond and pistachio sauce – lightly sweetened – England's national dish</p>
+            </div>
+            <span class="menu-item-price">11,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poulet_poulet_karai_name">Poulet Karai</h4>
+              <p data-i18n="item_poulet_poulet_karai_desc">Chicken served with a 'Karai' dish including lemon, tomatoes and herbs</p>
+            </div>
+            <span class="menu-item-price">10,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poulet_poulet_rogonjosh_name">Poulet Rogonjosh</h4>
+              <p data-i18n="item_poulet_poulet_rogonjosh_desc">Chicken cooked in a curry sauce with tomatoes, peppers, lemon and saffron – mildly spiced</p>
+            </div>
+            <span class="menu-item-price">11,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poulet_poulet_dall_name">Poulet Dall</h4>
+              <p data-i18n="item_poulet_poulet_dall_desc">Chicken cooked in a lightly sweet and spicy lemon and lentil sauce</p>
+            </div>
+            <span class="menu-item-price">11,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poulet_poulet_kurma_name">Poulet Kurma</h4>
+              <p data-i18n="item_poulet_poulet_kurma_desc">Chicken cooked in a sauce with pistachios, almonds, onions, cream and yogurt – lightly sweetened</p>
+            </div>
+            <span class="menu-item-price">10,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poulet_poulet_nepal_name">Poulet Nepal</h4>
+              <p data-i18n="item_poulet_poulet_nepal_desc">Chicken cooked in a fragrant sauce with pistachio, almond, papaya, mango and lychees</p>
+            </div>
+            <span class="menu-item-price">11,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poulet_poulet_biryani_name">Poulet Biryani</h4>
+              <p data-i18n="item_poulet_poulet_biryani_desc">Chicken cooked with rice, garlic, onion, saffron, pistachios and almonds – served in a clay pot covered with Indian bread</p>
+            </div>
+            <span class="menu-item-price">13,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poulet_poulet_madras_name">Poulet Madras</h4>
+              <p data-i18n="item_poulet_poulet_madras_desc">Chicken cooked in a spicy sauce</p>
+            </div>
+            <span class="menu-item-price">10,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poulet_poulet_balti_name">Poulet Balti</h4>
+              <p data-i18n="item_poulet_poulet_balti_desc">Chicken cooked and served in a Balti (bucket) – very mild dish</p>
+            </div>
+            <span class="menu-item-price">10,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poulet_poulet_dopiaza_name">Poulet Dopiaza</h4>
+              <p data-i18n="item_poulet_poulet_dopiaza_desc">Poulet cuit dans une sauce douce avec double oignon</p>
+            </div>
+            <span class="menu-item-price">11,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poulet_poulet_passanda_name">Poulet Passanda</h4>
+              <p data-i18n="item_poulet_poulet_passanda_desc">Chicken cooked with cashews and almonds in yogurt</p>
+            </div>
+            <span class="menu-item-price">11,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poulet_poulet_jalfrezi_name">Poulet Jalfrezi</h4>
+              <p data-i18n="item_poulet_poulet_jalfrezi_desc">Chicken cooked with chili and coconut milk</p>
+            </div>
+            <span class="menu-item-price">11,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poulet_poulet_vindaloo_name">Poulet Vindaloo</h4>
+              <p data-i18n="item_poulet_poulet_vindaloo_desc">Chicken cooked in a very spicy sauce</p>
+            </div>
+            <span class="menu-item-price">11,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poulet_poulet_tikka_ou_tandoori_biryani_name">Poulet Tikka ou Tandoori Biryani</h4>
+              <p data-i18n="item_poulet_poulet_tikka_ou_tandoori_biryani_desc">Grilled chicken cooked with rice, garlic, onion, saffron, pistachios and almonds – served in a clay pot covered with Indian bread</p>
+            </div>
+            <span class="menu-item-price">14,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poulet_poulet_tikka_dall_name">Poulet Tikka Dall</h4>
+              <p data-i18n="item_poulet_poulet_tikka_dall_desc">Chicken tikka cooked in a lightly sweet and spicy lemon and lentil sauce</p>
+            </div>
+            <span class="menu-item-price">12,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poulet_garlic_chicken_name">Garlic Chicken</h4>
+              <p data-i18n="item_poulet_garlic_chicken_desc">Garlic chicken – new recipe recommended by the chef</p>
+            </div>
+            <span class="menu-item-price">13,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poulet_butter_chicken_name">Butter Chicken</h4>
+              <p data-i18n="item_poulet_butter_chicken_desc">Mild butter chicken – very popular dish in Australia</p>
+            </div>
+            <span class="menu-item-price">12,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poulet_poulet_tikka_curry_name">Poulet Tikka Curry</h4>
+              <p data-i18n="item_poulet_poulet_tikka_curry_desc">Chicken tikka cooked in a curry sauce</p>
+            </div>
+            <span class="menu-item-price">11,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poulet_poulet_tikka_madras_name">Poulet Tikka Madras</h4>
+              <p data-i18n="item_poulet_poulet_tikka_madras_desc">Chicken tikka cooked in a spicy sauce</p>
+            </div>
+            <span class="menu-item-price">12,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poulet_poulet_tikka_jalfrezi_name">Poulet Tikka Jalfrezi</h4>
+              <p data-i18n="item_poulet_poulet_tikka_jalfrezi_desc">Chicken tikka cooked with chili and coconut milk</p>
+            </div>
+            <span class="menu-item-price">12,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poulet_poulet_phall_name">Poulet Phall</h4>
+              <p data-i18n="item_poulet_poulet_phall_desc">Extremely spicy sauce</p>
+            </div>
+            <span class="menu-item-price">12,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poulet_poulet_aux_épinards_name">Poulet aux Épinards</h4>
+              <p data-i18n="item_poulet_poulet_aux_épinards_desc">Chicken cooked with fresh spinach</p>
+            </div>
+            <span class="menu-item-price">11,00 €</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Spécialités Poisson -->
+      <div class="menu-category reveal">
+        <button class="menu-category-toggle">
+          <h2 class="menu-category-title" data-i18n="menuFish">Spécialités Poisson</h2>
+          <span class="menu-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poisson_poisson_curry_name">Poisson Curry</h4>
+              <p data-i18n="item_poisson_poisson_curry_desc">Fish cooked in a curry sauce</p>
+            </div>
+            <span class="menu-item-price">10,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poisson_poisson_grillé_name">Poisson Grillé</h4>
+              <p data-i18n="item_poisson_poisson_grillé_desc">Marinated and grilled fish</p>
+            </div>
+            <span class="menu-item-price">11,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poisson_espadon_bhuna_name">Espadon Bhuna</h4>
+              <p data-i18n="item_poisson_espadon_bhuna_desc">Swordfish cooked in a curry sauce</p>
+            </div>
+            <span class="menu-item-price">12,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poisson_poisson_balti_name">Poisson Balti</h4>
+              <p data-i18n="item_poisson_poisson_balti_desc">Fish served in a Balti (bucket) – very mild dish</p>
+            </div>
+            <span class="menu-item-price">11,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poisson_poisson_madras_name">Poisson Madras</h4>
+              <p data-i18n="item_poisson_poisson_madras_desc">Fish cooked in a spicy sauce</p>
+            </div>
+            <span class="menu-item-price">11,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poisson_poisson_vindaloo_name">Poisson Vindaloo</h4>
+              <p data-i18n="item_poisson_poisson_vindaloo_desc">Fish cooked in a very spicy sauce</p>
+            </div>
+            <span class="menu-item-price">11,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poisson_saumon_tikka_masala_name">Saumon Tikka Masala</h4>
+              <p data-i18n="item_poisson_saumon_tikka_masala_desc">New recipe very popular in England – marinated and grilled salmon then prepared with a creamy sauce</p>
+            </div>
+            <span class="menu-item-price">11,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_poisson_saumon_tikka_biryani_name">Saumon Tikka Biryani</h4>
+              <p data-i18n="item_poisson_saumon_tikka_biryani_desc">Marinated grilled salmon then cooked with rice in the traditional way</p>
+            </div>
+            <span class="menu-item-price">13,50 €</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Noix de St-Jacques à la Sauce Indienne -->
+      <div class="menu-category reveal">
+        <button class="menu-category-toggle">
+          <h2 class="menu-category-title" data-i18n="menuScallops">Noix de St-Jacques à la Sauce Indienne</h2>
+          <span class="menu-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_stj_sucré_salé_name">Sucré Salé</h4>
+              <p data-i18n="item_stj_sucré_salé_desc">Kurma Sauce</p>
+            </div>
+            <span class="menu-item-price">18,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_stj_doux_name">Doux</h4>
+              <p data-i18n="item_stj_doux_desc">Curry Sauce</p>
+            </div>
+            <span class="menu-item-price">18,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_stj_pimenté_name">Pimenté</h4>
+              <p data-i18n="item_stj_pimenté_desc">Vindaloo or Madras – served with rice</p>
+            </div>
+            <span class="menu-item-price">18,00 €</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Spécialités Gambas & Crevettes -->
+      <div class="menu-category reveal">
+        <button class="menu-category-toggle">
+          <h2 class="menu-category-title" data-i18n="menuGambas">Spécialités Gambas & Crevettes</h2>
+          <span class="menu-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_gambas_gambas_tandoori_name">Gambas Tandoori</h4>
+              <p data-i18n="item_gambas_gambas_tandoori_desc">Marinated and grilled shrimp</p>
+            </div>
+            <span class="menu-item-price">16,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_gambas_gambas_curry_name">Gambas Curry</h4>
+              <p data-i18n="item_gambas_gambas_curry_desc">Shrimp cooked in a curry sauce</p>
+            </div>
+            <span class="menu-item-price">13,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_gambas_gambas_karai_name">Gambas Karai</h4>
+              <p data-i18n="item_gambas_gambas_karai_desc">Shrimp served with a 'Karai' dish including lemon, tomatoes and herbs</p>
+            </div>
+            <span class="menu-item-price">14,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_gambas_gambas_rogonjosh_name">Gambas Rogonjosh</h4>
+              <p data-i18n="item_gambas_gambas_rogonjosh_desc">Shrimp cooked in a curry sauce with tomatoes, peppers, lemon and saffron – mildly spiced</p>
+            </div>
+            <span class="menu-item-price">15,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_gambas_gambas_dall_name">Gambas Dall</h4>
+              <p data-i18n="item_gambas_gambas_dall_desc">Shrimp cooked in a lightly sweet and spicy lemon and lentil sauce</p>
+            </div>
+            <span class="menu-item-price">15,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_gambas_crevettes_dall_name">Crevettes Dall</h4>
+              <p data-i18n="item_gambas_crevettes_dall_desc">Shrimp cooked in a lightly sweet and spicy lemon and lentil sauce</p>
+            </div>
+            <span class="menu-item-price">12,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_gambas_gambas_kurma_name">Gambas Kurma</h4>
+              <p data-i18n="item_gambas_gambas_kurma_desc">Shrimp cooked in a sauce with pistachios, almonds, onions, cream and yogurt – lightly sweetened</p>
+            </div>
+            <span class="menu-item-price">14,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_gambas_gambas_nepal_name">Gambas Nepal</h4>
+              <p data-i18n="item_gambas_gambas_nepal_desc">Shrimp cooked in a fragrant sauce with pistachio, almond, papaya, mango and lychees</p>
+            </div>
+            <span class="menu-item-price">15,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_gambas_gambas_biryani_name">Gambas Biryani</h4>
+              <p data-i18n="item_gambas_gambas_biryani_desc">Shrimp cooked with rice, garlic, onion, saffron, pistachios and almonds – served in a clay pot</p>
+            </div>
+            <span class="menu-item-price">18,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_gambas_gambas_madras_name">Gambas Madras</h4>
+              <p data-i18n="item_gambas_gambas_madras_desc">Shrimp cooked in a spicy sauce</p>
+            </div>
+            <span class="menu-item-price">15,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_gambas_crevettes_madras_name">Crevettes Madras</h4>
+              <p data-i18n="item_gambas_crevettes_madras_desc">Shrimp cooked in a spicy sauce</p>
+            </div>
+            <span class="menu-item-price">12,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_gambas_gambas_balti_name">Gambas Balti</h4>
+              <p data-i18n="item_gambas_gambas_balti_desc">Shrimp cooked and served in a Balti (bucket) – very mild dish</p>
+            </div>
+            <span class="menu-item-price">14,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_gambas_gambas_dopiaza_name">Gambas Dopiaza</h4>
+              <p data-i18n="item_gambas_gambas_dopiaza_desc">Gambas cuites dans une sauce douce avec double oignon</p>
+            </div>
+            <span class="menu-item-price">15,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_gambas_gambas_pasanda_name">Gambas Pasanda</h4>
+              <p data-i18n="item_gambas_gambas_pasanda_desc">Shrimp cooked with cashews and almonds in yogurt</p>
+            </div>
+            <span class="menu-item-price">15,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_gambas_gambas_jalfrezi_name">Gambas Jalfrezi</h4>
+              <p data-i18n="item_gambas_gambas_jalfrezi_desc">Shrimp cooked with chili and coconut milk</p>
+            </div>
+            <span class="menu-item-price">15,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_gambas_gambas_vindaloo_name">Gambas Vindaloo</h4>
+              <p data-i18n="item_gambas_gambas_vindaloo_desc">Shrimp cooked in a very spicy sauce</p>
+            </div>
+            <span class="menu-item-price">15,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_gambas_crevettes_vindaloo_name">Crevettes Vindaloo</h4>
+              <p data-i18n="item_gambas_crevettes_vindaloo_desc">Shrimp cooked in a very spicy sauce</p>
+            </div>
+            <span class="menu-item-price">13,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_gambas_crevettes_masala_name">Crevettes Masala</h4>
+              <p data-i18n="item_gambas_crevettes_masala_desc">Shrimp cooked in a fragrant almond and pistachio sauce</p>
+            </div>
+            <span class="menu-item-price">12,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_gambas_gambas_phall_name">Gambas Phall</h4>
+              <p data-i18n="item_gambas_gambas_phall_desc">Extremely spicy sauce</p>
+            </div>
+            <span class="menu-item-price">16,00 €</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Spécialités Légumes -->
+      <div class="menu-category reveal">
+        <button class="menu-category-toggle">
+          <h2 class="menu-category-title" data-i18n="menuVeg">Spécialités Légumes</h2>
+          <span class="menu-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_legumes_légumes_curry_name">Légumes Curry</h4>
+              <p data-i18n="item_legumes_légumes_curry_desc">Vegetables cooked in a curry sauce</p>
+            </div>
+            <span class="menu-item-price">8,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_legumes_légumes_biryani_name">Légumes Biryani</h4>
+              <p data-i18n="item_legumes_légumes_biryani_desc">Fresh vegetables cooked with rice in a clay pot Indian style – covered with Indian bread</p>
+            </div>
+            <span class="menu-item-price">12,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_legumes_légumes_kurma_name">Légumes Kurma</h4>
+              <p data-i18n="item_legumes_légumes_kurma_desc">Fresh vegetables cooked in a pistachio, almond, cream and onion sauce – lightly sweetened</p>
+            </div>
+            <span class="menu-item-price">10,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_legumes_aloo_gobi_name">Aloo Gobi</h4>
+              <p data-i18n="item_legumes_aloo_gobi_desc">Cauliflower with potato</p>
+            </div>
+            <span class="menu-item-price">8,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_legumes_aloo_bombay_name">Aloo Bombay</h4>
+              <p data-i18n="item_legumes_aloo_bombay_desc">Potatoes cooked Indian style</p>
+            </div>
+            <span class="menu-item-price">8,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_legumes_aubergine_curry_name">Aubergine Curry</h4>
+              <p data-i18n="item_legumes_aubergine_curry_desc">Eggplant cooked in a curry sauce</p>
+            </div>
+            <span class="menu-item-price">8,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_legumes_chana_masala_name">Chana Masala</h4>
+              <p data-i18n="item_legumes_chana_masala_desc">Chickpeas cooked in curry sauce</p>
+            </div>
+            <span class="menu-item-price">8,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_legumes_aloo_mutter_name">Aloo Mutter</h4>
+              <p data-i18n="item_legumes_aloo_mutter_desc">Potatoes cooked with peas</p>
+            </div>
+            <span class="menu-item-price">8,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_legumes_sag_panir_name">Sag Panir</h4>
+              <p data-i18n="item_legumes_sag_panir_desc">Spinach sautéed with cheese</p>
+            </div>
+            <span class="menu-item-price">8,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_legumes_aloo_sag_name">Aloo Sag</h4>
+              <p data-i18n="item_legumes_aloo_sag_desc">Potatoes cooked with spinach</p>
+            </div>
+            <span class="menu-item-price">8,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_legumes_dall_curry_name">Dall Curry</h4>
+              <p data-i18n="item_legumes_dall_curry_desc">Indian lentils cooked in a curry sauce</p>
+            </div>
+            <span class="menu-item-price">8,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_legumes_paneer_tikka_masala_name">Paneer Tikka Masala</h4>
+              <p data-i18n="item_legumes_paneer_tikka_masala_desc">Homemade fresh cheese browned and cooked in a curry sauce</p>
+            </div>
+            <span class="menu-item-price">10,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_legumes_paneer_mutter_masala_name">Paneer Mutter Masala</h4>
+              <p data-i18n="item_legumes_paneer_mutter_masala_desc">Homemade fresh cheese browned and cooked with peas</p>
+            </div>
+            <span class="menu-item-price">10,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_legumes_tacos_à_lindienne_viande_name">Tacos à l'Indienne Viande</h4>
+              <p data-i18n="item_legumes_tacos_à_lindienne_viande_desc">Sweet or spicy – cheese naan filled with chicken tikka or curry</p>
+            </div>
+            <span class="menu-item-price">8,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_legumes_tacos_à_lindienne_végétarien_name">Tacos à l'Indienne Végétarien</h4>
+              <p data-i18n="item_legumes_tacos_à_lindienne_végétarien_desc">Sweet or spicy – cheese naan filled with potatoes or curry</p>
+            </div>
+            <span class="menu-item-price">7,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_legumes_kothu_parotta_name">Kothu Parotta</h4>
+              <p data-i18n="item_legumes_kothu_parotta_desc">Choice of: spicy or non-spicy – chicken tikka, chicken, lamb or vegetables. Composed of shredded parottas, eggs, vegetables, onions, chilies, spices and meat. Popular in South India, Sri Lanka and Malaysia.</p>
+            </div>
+            <span class="menu-item-price">7,50 €</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nos Pains & Riz -->
+      <div class="menu-category reveal">
+        <button class="menu-category-toggle">
+          <h2 class="menu-category-title" data-i18n="menuBreads">Nos Pains & Riz</h2>
+          <span class="menu-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_pains_nan_name">Nan</h4>
+              <p data-i18n="item_pains_nan_desc">White flour baked over a wood fire</p>
+            </div>
+            <span class="menu-item-price">2,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_pains_nan_fromage_name">Nan Fromage</h4>
+              <p data-i18n="item_pains_nan_fromage_desc">White flour baked over a wood fire with melted cheese inside</p>
+            </div>
+            <span class="menu-item-price">3,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_pains_garlic_nan_name">Garlic Nan</h4>
+              <p data-i18n="item_pains_garlic_nan_desc">White flour baked over a wood fire with garlic inside</p>
+            </div>
+            <span class="menu-item-price">3,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_pains_peshwari_nan_name">Peshwari Nan</h4>
+              <p data-i18n="item_pains_peshwari_nan_desc">Naan filled with chopped almonds and raisins</p>
+            </div>
+            <span class="menu-item-price">4,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_pains_keema_nan_name">Keema Nan</h4>
+              <p data-i18n="item_pains_keema_nan_desc">Naan filled with minced meat</p>
+            </div>
+            <span class="menu-item-price">4,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_pains_chapati_name">Chapati</h4>
+              <p data-i18n="item_pains_chapati_desc">White flour pan-cooked</p>
+            </div>
+            <span class="menu-item-price">2,75 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_pains_porata_name">Porata</h4>
+              <p data-i18n="item_pains_porata_desc">White flour pan-cooked with clarified butter</p>
+            </div>
+            <span class="menu-item-price">3,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_pains_mirchnan_name">Mirchnan</h4>
+              <p data-i18n="item_pains_mirchnan_desc">White flour baked over a wood fire with pieces of chili and red onion</p>
+            </div>
+            <span class="menu-item-price">4,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_pains_riz_pulao_name">Riz Pulao</h4>
+              <p data-i18n="item_pains_riz_pulao_desc">Basmati rice cooked with clarified butter and fragrant spices</p>
+            </div>
+            <span class="menu-item-price">3,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_pains_riz_nature_name">Riz Nature</h4>
+              <p data-i18n="item_pains_riz_nature_desc">Fragrant white rice</p>
+            </div>
+            <span class="menu-item-price">2,50 €</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Boissons Indiennes – Lassi -->
+      <div class="menu-category reveal">
+        <button class="menu-category-toggle">
+          <h2 class="menu-category-title" data-i18n="menuDrinks">Boissons Indiennes – Lassi</h2>
+          <span class="menu-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_lassi_lassi_sucré_name">Lassi Sucré</h4>
+              <p data-i18n="item_lassi_lassi_sucré_desc"></p>
+            </div>
+            <span class="menu-item-price">3,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_lassi_lassi_salé_name">Lassi Salé</h4>
+              <p data-i18n="item_lassi_lassi_salé_desc"></p>
+            </div>
+            <span class="menu-item-price">3,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_lassi_lassi_nature_name">Lassi Nature</h4>
+              <p data-i18n="item_lassi_lassi_nature_desc"></p>
+            </div>
+            <span class="menu-item-price">2,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_lassi_lassi_mangue_name">Lassi Mangue</h4>
+              <p data-i18n="item_lassi_lassi_mangue_desc"></p>
+            </div>
+            <span class="menu-item-price">3,50 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_lassi_lassi_banane_name">Lassi Banane</h4>
+              <p data-i18n="item_lassi_lassi_banane_desc"></p>
+            </div>
+            <span class="menu-item-price">3,50 €</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nos Desserts – Préparation Maison -->
+      <div class="menu-category reveal">
+        <button class="menu-category-toggle">
+          <h2 class="menu-category-title" data-i18n="menuDesserts">Nos Desserts – Préparation Maison</h2>
+          <span class="menu-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_desserts_délice_à_la_mangue_name">Délice à la Mangue</h4>
+              <p data-i18n="item_desserts_délice_à_la_mangue_desc">Sweet fragrant mixture of mangos mixed with fresh cream</p>
+            </div>
+            <span class="menu-item-price">4,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_desserts_délice_à_la_banane_name">Délice à la Banane</h4>
+              <p data-i18n="item_desserts_délice_à_la_banane_desc">Sweet fragrant mixture of fresh banana with fresh cream</p>
+            </div>
+            <span class="menu-item-price">4,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_desserts_kulfi_name">Kulfi</h4>
+              <p data-i18n="item_desserts_kulfi_desc">Homemade Indian ice cream with pistachios, almonds and coconut</p>
+            </div>
+            <span class="menu-item-price">5,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_desserts_gulob_jamoun_name">Gulob Jamoun</h4>
+              <p data-i18n="item_desserts_gulob_jamoun_desc">Homemade Indian pastry – cake ball in cinnamon syrup</p>
+            </div>
+            <span class="menu-item-price">5,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_desserts_salade_de_fruits_exotiques_name">Salade de Fruits Exotiques</h4>
+              <p data-i18n="item_desserts_salade_de_fruits_exotiques_desc">Papaya, mangos, lychees, pineapples in lime syrup</p>
+            </div>
+            <span class="menu-item-price">5,00 €</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu Traditionnel Thali -->
+      <div class="menu-category reveal">
+        <button class="menu-category-toggle">
+          <h2 class="menu-category-title" data-i18n="menuSets">Menu Traditionnel Thali</h2>
+          <span class="menu-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_thalis_thali_végétarien_name">Thali Végétarien</h4>
+              <p data-i18n="item_thalis_thali_végétarien_desc">Curry de légumes</p>
+            </div>
+            <span class="menu-item-price">15,90 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_thalis_thali_indien_viande_name">Thali Indien Viande</h4>
+              <p data-i18n="item_thalis_thali_indien_viande_desc">Curry de poulet, tandoori ou curry d'agneau</p>
+            </div>
+            <span class="menu-item-price">15,00 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4 data-i18n="item_thalis_thali_indien_fruit_de_mer_name">Thali Indien Fruit de Mer</h4>
+              <p data-i18n="item_thalis_thali_indien_fruit_de_mer_desc">Curry de crevettes ou curry de poisson</p>
+            </div>
+            <span class="menu-item-price">19,00 €</span>
+          </div>
+        </div>
+      </div>
+      </div>
+  </section>
 
     <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="index.html" class="nav-logo">Le Gandhi</a>
+                    <a href="index.html" class="nav-logo"><img src="Logo_transparent.png" alt="Le Gandhi"></a>
                     <p data-i18n="footerDesc">L'essence authentique de l'héritage indien à Toulouse.</p>
                     <div class="footer-social">
                         <a href="https://www.instagram.com/legandhi.toulouse/" target="_blank" rel="noopener"><i
                                 class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@resutaurantlegandhi" target="_blank" rel="noopener"
+                            aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                         <a href="https://www.facebook.com/legandhi.toulouse/" target="_blank" rel="noopener"><i
                                 class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                        
                     </div>
                 </div>
                 <div class="footer-col">
@@ -421,17 +1201,21 @@
                     <h3 data-i18n="footerNewsletter">Newsletter</h3>
                     <p data-i18n="footerNewsletterDesc">Abonnez-vous pour recevoir nos offres spéciales.</p>
                     <form class="newsletter-form" onsubmit="event.preventDefault();"><input type="email"
-                            class="newsletter-input" placeholder="Votre email"
+                            class="newsletter-input" placeholder="Votre email" data-i18n-placeholder="newsletterPlaceholder"
                             data-i18n="footerNewsletterPlaceholder"><button type="submit" class="btn btn-gold btn-sm"
-                            data-i18n="footerNewsletterBtn">OK</button></form>
+                            data-i18n="footerNewsletterBtn">OK</button>                    <div style="display:flex; align-items:flex-start; gap:8px; margin-top:12px; width:100%;">
+                        <input type="checkbox" id="newsConsent" style="margin-top:2px; width:14px; height:14px; accent-color:var(--color-gold);" required>
+                        <label for="newsConsent" style="font-size:0.7rem; color:#b8a99a; cursor:pointer; line-height:1.4;" data-i18n="newsletterConsent">J'accepte de recevoir des offres.</label>
+                    </div>
+                    </form>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p data-i18n="footerCopyright">© 2025 Le Gandhi Toulouse. Tous droits réservés.</p>
                 <div class="footer-legal">
-                    <a href="#" data-i18n="footerLegal">Mentions Légales</a>
-                    <a href="#" data-i18n="footerPrivacy">Confidentialité</a>
-                    <a href="#" data-i18n="footerCookies">Cookies</a>
+                    <a href="legal-notice.html" data-i18n="footerLegal">Mentions Légales</a>
+                    <a href="privacy-policy.html" data-i18n="footerPrivacy">Confidentialité</a>
+                    <a href="cookie-policy.html" data-i18n="footerCookies">Cookies</a>
                 </div>
             </div>
         </div>
@@ -439,15 +1223,17 @@
 
     <!-- Floating Action Buttons -->
     <div class="floating-actions">
-        <a href="https://wa.me/33780738678" class="fab-btn fab-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <a href="https://wa.me/33643014677" class="fab-btn fab-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>
+    <a href="https://www.tiktok.com/@resutaurantlegandhi" class="fab-btn fab-tiktok" target="_blank" rel="noopener" aria-label="TikTok">
+        <i class="fab fa-tiktok"></i>
+    </a>
         <a href="tel:+33780738678" class="fab-btn fab-call" aria-label="Appeler">
             <i class="fas fa-phone-alt"></i>
         </a>
     </div>
 
-    <script src="translations.js"></script>
     <script src="main.js"></script>
 </body>
 

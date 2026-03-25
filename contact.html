@@ -4,11 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact & Réservation – Le Gandhi | Restaurant Indien à Toulouse</title>
+    <title data-i18n="titleContact">Contact & Réservation – Le Gandhi | Restaurant Indien à Toulouse</title>
     <meta name="description"
         content="Réservez votre table au restaurant Le Gandhi à Toulouse. Contactez-nous au 05 61 99 21 03. 39 Rue de l'Industrie, 31000 Toulouse.">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="translations.js"></script>
+    <script src="i18n.js"></script>
 </head>
 
 <body>
@@ -26,7 +28,7 @@
     <header class="header" id="header">
         <div class="container">
             <nav class="nav">
-                <a href="index.html" class="nav-logo"><img src="Logo.png" alt="Le Gandhi"></a>
+                <a href="index.html" class="nav-logo"><img src="Logo_transparent.png" alt="Le Gandhi"></a>
                 <ul class="nav-links">
                     <li><a href="index.html" data-i18n="navHome">Accueil</a></li>
                     <li><a href="menu.html" data-i18n="navMenu">Menu</a></li>
@@ -38,12 +40,33 @@
                     <div class="nav-social">
                         <a href="https://www.instagram.com/legandhi.toulouse/" target="_blank" rel="noopener"
                             aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@resutaurantlegandhi" target="_blank" rel="noopener"
+                            aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                         <a href="https://www.facebook.com/legandhi.toulouse/" target="_blank" rel="noopener"
                             aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     </div>
-                    <div class="lang-toggle">
-                        <button class="lang-btn active" data-lang="fr">FR</button>
-                        <button class="lang-btn" data-lang="en">EN</button>
+                    <div class="lang-dropdown">
+                        <button class="lang-dropbtn" id="langDropBtn">
+                            <span id="currentLang">FR</span> <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="lang-dropdown-content" id="langOptions">
+                            <a href="#" data-lang="fr">Français</a>
+                            <a href="#" data-lang="en">English</a>
+                            <a href="#" data-lang="es">Español</a>
+                            <a href="#" data-lang="de">Deutsch</a>
+                            <a href="#" data-lang="it">Italiano</a>
+                            <a href="#" data-lang="cs">Čeština</a>
+                            <a href="#" data-lang="ru">Русский</a>
+                            <a href="#" data-lang="hu">Magyar</a>
+                            <a href="#" data-lang="sk">Slovensky</a>
+                            <a href="#" data-lang="nl">Nederlands</a>
+                            <a href="#" data-lang="tr">Türkçe</a>
+                            <a href="#" data-lang="pl">Polski</a>
+                            <a href="#" data-lang="uk">Українська</a>
+                            <a href="#" data-lang="pt">Português</a>
+                            <a href="#" data-lang="hr">Hrvatski</a>
+                            <a href="#" data-lang="ro">Română</a>
+                        </div>
                     </div>
                     <a href="contact.html" class="btn btn-primary btn-sm" data-i18n="navReserve">Réserver</a>
                 </div>
@@ -96,20 +119,26 @@
                                 <input type="time" id="resTime" class="form-input" required>
                             </div>
                             <div class="form-group">
-                                <label class="form-label" data-i18n="contactFormGuests">Nombre de convives</label>
-                                <select id="resGuests" class="form-select" required>
-                                    <option value="1">1 personne</option>
-                                    <option value="2" selected>2 personnes</option>
-                                    <option value="3">3 personnes</option>
-                                    <option value="4">4 personnes</option>
-                                    <option value="5">5 personnes</option>
-                                    <option value="6">6+ personnes</option>
-                                </select>
-                            </div>
+                                <label class="form-label" data-i18n="contactFormGuests">Nombre de personnes</label>
+                            <select id="resGuests" class="form-input" required>
+                                <option value="1" data-i18n="contactFormGuests1">1 personne</option>
+                                <option value="2" data-i18n="contactFormGuests2" selected>2 personnes</option>
+                                <option value="3" data-i18n="contactFormGuests3">3 personnes</option>
+                                <option value="4" data-i18n="contactFormGuests4">4 personnes</option>
+                                <option value="5" data-i18n="contactFormGuests5">5 personnes</option>
+                                <option value="6" data-i18n="contactFormGuests6">6+ personnes</option>
+                            </select>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label" data-i18n="contactFormMessage">Message (optionnel)</label>
-                            <textarea id="resMessage" class="form-textarea"></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label class="form-label" data-i18n="contactFormMessage">Demandes spéciales</label>
+                            <textarea id="resMessage" class="form-textarea" data-i18n-placeholder="contactFormMessagePlaceholder" placeholder="Allergies, anniversaire..."></textarea>
+                        </div>
+                                                <div class="form-group full-width" style="display:flex; align-items:flex-start; gap:12px; margin-top:10px; margin-bottom:20px;">
+                            <input type="checkbox" id="resConsent" style="margin-top:5px; width:18px; height:18px; accent-color:var(--color-gold);" required>
+                            <label for="resConsent" style="font-size:0.85rem; color:#b8a99a; cursor:pointer; line-height:1.5;" data-i18n="contactFormConsent">
+                                J'accepte que mes données soient collectées pour le traitement de ma demande (voir notre <a href='privacy-policy.html' target='_blank' style='color:var(--color-gold);'>Politique de Confidentialité</a>).
+                            </label>
                         </div>
                         <button type="submit" id="resSubmitBtn" class="btn btn-primary" data-i18n="contactFormSubmit">
                             <i class="fab fa-whatsapp" style="margin-right:8px;"></i>Réserver via WhatsApp
@@ -158,10 +187,11 @@
                         <div class="footer-social" style="gap:16px;">
                             <a href="https://www.instagram.com/legandhi.toulouse/" target="_blank" rel="noopener"
                                 style="width:48px;height:48px;font-size:1.2rem;"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.tiktok.com/@resutaurantlegandhi" target="_blank" rel="noopener"
+                                style="width:48px;height:48px;font-size:1.2rem;" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                             <a href="https://www.facebook.com/legandhi.toulouse/" target="_blank" rel="noopener"
                                 style="width:48px;height:48px;font-size:1.2rem;"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" style="width:48px;height:48px;font-size:1.2rem;"><i
-                                    class="fab fa-tripadvisor"></i></a>
+                            
                         </div>
                     </div>
 
@@ -182,14 +212,16 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="index.html" class="nav-logo">Le Gandhi</a>
+                    <a href="index.html" class="nav-logo"><img src="Logo_transparent.png" alt="Le Gandhi"></a>
                     <p data-i18n="footerDesc">L'essence authentique de l'héritage indien à Toulouse.</p>
                     <div class="footer-social">
                         <a href="https://www.instagram.com/legandhi.toulouse/" target="_blank" rel="noopener"><i
                                 class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@resutaurantlegandhi" target="_blank" rel="noopener"
+                            aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                         <a href="https://www.facebook.com/legandhi.toulouse/" target="_blank" rel="noopener"><i
                                 class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                        
                     </div>
                 </div>
                 <div class="footer-col">
@@ -211,17 +243,21 @@
                     <h3 data-i18n="footerNewsletter">Newsletter</h3>
                     <p data-i18n="footerNewsletterDesc">Abonnez-vous pour recevoir nos offres spéciales.</p>
                     <form class="newsletter-form" onsubmit="event.preventDefault();"><input type="email"
-                            class="newsletter-input" placeholder="Votre email"
+                            class="newsletter-input" placeholder="Votre email" data-i18n-placeholder="newsletterPlaceholder"
                             data-i18n="footerNewsletterPlaceholder"><button type="submit" class="btn btn-gold btn-sm"
-                            data-i18n="footerNewsletterBtn">OK</button></form>
+                            data-i18n="footerNewsletterBtn">OK</button>                    <div style="display:flex; align-items:flex-start; gap:8px; margin-top:12px; width:100%;">
+                        <input type="checkbox" id="newsConsent" style="margin-top:2px; width:14px; height:14px; accent-color:var(--color-gold);" required>
+                        <label for="newsConsent" style="font-size:0.7rem; color:#b8a99a; cursor:pointer; line-height:1.4;" data-i18n="newsletterConsent">J'accepte de recevoir des offres.</label>
+                    </div>
+                    </form>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p data-i18n="footerCopyright">© 2025 Le Gandhi Toulouse. Tous droits réservés.</p>
+                <p data-i18n="footerCopyright">© 2026 Le Gandhi Toulouse. Tous droits réservés.</p>
                 <div class="footer-legal">
-                    <a href="#" data-i18n="footerLegal">Mentions Légales</a>
-                    <a href="#" data-i18n="footerPrivacy">Confidentialité</a>
-                    <a href="#" data-i18n="footerCookies">Cookies</a>
+                    <a href="legal-notice.html" data-i18n="footerLegal">Mentions Légales</a>
+                    <a href="privacy-policy.html" data-i18n="footerPrivacy">Confidentialité</a>
+                    <a href="cookie-policy.html" data-i18n="footerCookies">Cookies</a>
                 </div>
             </div>
         </div>
@@ -229,15 +265,17 @@
 
     <!-- Floating Action Buttons -->
     <div class="floating-actions">
-        <a href="https://wa.me/33780738678" class="fab-btn fab-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <a href="https://wa.me/33643014677" class="fab-btn fab-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>
+    <a href="https://www.tiktok.com/@resutaurantlegandhi" class="fab-btn fab-tiktok" target="_blank" rel="noopener" aria-label="TikTok">
+        <i class="fab fa-tiktok"></i>
+    </a>
         <a href="tel:+33780738678" class="fab-btn fab-call" aria-label="Appeler">
             <i class="fas fa-phone-alt"></i>
         </a>
     </div>
 
-    <script src="translations.js"></script>
     <script src="main.js"></script>
 </body>
 
