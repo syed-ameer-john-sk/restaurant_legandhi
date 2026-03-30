@@ -3,6 +3,11 @@
 // ================================
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize EmailJS safely if it exists
+    if (typeof emailjs !== 'undefined') {
+        emailjs.init('gz0DYtYutbSFtpZq5');
+    }
+
     initHeader();
     initMobileMenu();
     initSmoothScroll();
@@ -15,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     removeLogoWhiteBackground();
     initOpeningHours();
     initMenuAccordion();
+    initReservationToggle();
 });
 
 // ================================
@@ -245,35 +251,51 @@ function initHeroVideo() {
 // Remove White Background from Logo
 // ================================
 function removeLogoWhiteBackground() {
-    document.querySelectorAll('.nav-logo img').forEach(img => {
-        const process = () => {
-            const canvas = document.createElement('canvas');
-            canvas.width = img.naturalWidth;
-            canvas.height = img.naturalHeight;
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0);
-            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            const data = imageData.data;
-            for (let i = 0; i < data.length; i += 4) {
-                const r = data[i], g = data[i + 1], b = data[i + 2];
-                // Calculate how close to white this pixel is
-                const brightness = (r + g + b) / 3;
-                if (brightness > 220) {
-                    // Fade out near-white pixels smoothly
-                    const alpha = Math.max(0, (255 - brightness) * (255 / 35));
-                    data[i + 3] = Math.min(data[i + 3], Math.round(alpha));
+    try {
+        document.querySelectorAll('.nav-logo img').forEach(img => {
+            const process = () => {
+                try {
+                    const canvas = document.createElement('canvas');
+                    if (!img.naturalWidth) return;
+                    canvas.width = img.naturalWidth;
+                    canvas.height = img.naturalHeight;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0);
+                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = imageData.data;
+                    for (let i = 0; i < data.length; i += 4) {
+                        const r = data[i], g = data[i + 1], b = data[i + 2];
+                        const brightness = (r + g + b) / 3;
+                        if (brightness > 220) {
+                            const alpha = Math.max(0, (255 - brightness) * (255 / 35));
+                            data[i + 3] = Math.min(data[i + 3], Math.round(alpha));
+                        }
+                    }
+                    ctx.putImageData(imageData, 0, 0);
+                    img.src = canvas.toDataURL('image/png');
+                } catch (e) {
+                    console.warn('[Logo] Could not process transparency on local file protocol:', e.message);
                 }
+            };
+            if (img.complete && img.naturalWidth > 0) {
+                process();
+            } else {
+                img.addEventListener('load', process);
             }
-            ctx.putImageData(imageData, 0, 0);
-            img.src = canvas.toDataURL('image/png');
-        };
-        if (img.complete && img.naturalWidth > 0) {
-            process();
-        } else {
-            img.addEventListener('load', process);
-        }
-    });
+        });
+    } catch (err) {
+        console.error('[Logo] Error in removeLogoWhiteBackground:', err);
+    }
 }
+
+// ================================
+// Reservation Method Config
+// ================================
+// ⚠️ REPLACE service_jb0j3ks with your actual EmailJS Service ID
+const EMAILJS_SERVICE_ID  = 'service_k13xenc';   // Real Service ID
+const EMAILJS_TEMPLATE_RESTAURANT = 'template_ytw1wzz'; // Restaurant notification
+const EMAILJS_TEMPLATE_CUSTOMER   = 'template_iqtvzkw'; // Customer confirmation
+const RESTAURANT_EMAIL = 'resturantlegandhi@orangr.fr';
 
 // ================================
 // WhatsApp Reservation Redirect
@@ -321,129 +343,259 @@ function handleReservationWhatsApp(event) {
     }
 
     // Build the WhatsApp message (no emojis — they break in URL encoding)
-    let waMessage = '*Nouvelle R\u00e9servation \u2013 Le Gandhi*\n\n';
-    waMessage += '*Nom :* ' + name + '\n';
-    if (email) waMessage += '*Email :* ' + email + '\n';
-    if (phone) waMessage += '*T\u00e9l\u00e9phone :* ' + phone + '\n';
-    waMessage += '*Date :* ' + formattedDate + '\n';
-    waMessage += '*Heure :* ' + formattedTime + '\n';
-    waMessage += '*Convives :* ' + guests + '\n';
-    if (message) waMessage += '\n*Message :*\n' + message + '\n';
+    let waMessage = 'Nouvelle R\u00e9servation \u2013 Le Gandhi\n\n';
+    waMessage += 'Nom : ' + name + '\n';
+    if (email) waMessage += 'Email : ' + email + '\n';
+    if (phone) waMessage += 'T\u00e9l\u00e9phone : ' + phone + '\n';
+    waMessage += 'Date : ' + formattedDate + '\n';
+    waMessage += 'Heure : ' + formattedTime + '\n';
+    waMessage += 'Convives : ' + guests + '\n';
+    if (message) waMessage += '\nMessage :\n' + message + '\n';
     waMessage += '\n---\nEnvoy\u00e9 depuis le site legandhi-toulouse.fr';
 
     // Encode and build WhatsApp URL
     const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMessage)}`;
 
-    // Show success confirmation before redirect
-    showReservationConfirmation(() => {
-        window.open(waUrl, '_blank');
-    });
+    // Redirect directly to WhatsApp
+    window.open(waUrl, '_blank');
+    
+    // Reset form after redirect
+    document.getElementById('reservationForm')?.reset();
 }
 
-function showReservationConfirmation(callback) {
-    // Create overlay
-    const overlay = document.createElement('div');
-    overlay.id = 'waConfirmOverlay';
-    overlay.style.cssText = `
-        position: fixed; inset: 0; z-index: 9999;
-        background: rgba(0, 0, 0, 0.7);
-        backdrop-filter: blur(8px);
-        display: flex; align-items: center; justify-content: center;
-        opacity: 0; transition: opacity 0.3s ease;
-    `;
+// ================================
+// Reservation Toggle: WhatsApp / Email
+// ================================
+let activeReservationMethod = 'whatsapp'; // 'whatsapp' | 'email'
 
-    const card = document.createElement('div');
-    card.style.cssText = `
-        background: linear-gradient(145deg, #2a1a1a, #1a1a1a);
-        border: 1px solid rgba(212, 168, 67, 0.3);
-        border-radius: 20px;
-        padding: 48px 40px;
-        text-align: center;
-        max-width: 420px;
-        width: 90%;
-        transform: scale(0.8); opacity: 0;
-        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5), 0 0 40px rgba(212, 168, 67, 0.1);
-    `;
+function initReservationToggle() {
+    const btnWA    = document.getElementById('btnMethodWA');
+    const btnEmail = document.getElementById('btnMethodEmail');
+    const emailInput = document.getElementById('resEmail');
+    if (!btnWA || !btnEmail) return;
 
+    btnWA.addEventListener('click', () => switchReservationMethod('whatsapp'));
+    btnEmail.addEventListener('click', () => switchReservationMethod('email'));
+}
+
+function switchReservationMethod(method) {
+    activeReservationMethod = method;
+    const btnWA    = document.getElementById('btnMethodWA');
+    const btnEmail = document.getElementById('btnMethodEmail');
+    const icon     = document.getElementById('resSubmitIcon');
+    const text     = document.getElementById('resSubmitText');
+    const emailInput = document.getElementById('resEmail');
     const lang = document.documentElement.lang || 'fr';
     const isFr = lang === 'fr';
 
-    card.innerHTML = `
-        <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#25D366,#128C7E);
-            display:flex;align-items:center;justify-content:center;margin:0 auto 24px;
-            box-shadow: 0 8px 32px rgba(37,211,102,0.3);">
-            <i class="fab fa-whatsapp" style="font-size:2.2rem;color:#fff;"></i>
-        </div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#f5f0e8;margin-bottom:12px;">
-            ${isFr ? 'Réservation prête !' : 'Reservation Ready!'}
-        </h3>
-        <p style="color:#b8a99a;font-size:0.95rem;line-height:1.6;margin-bottom:28px;">
-            ${isFr
-            ? 'Vous allez être redirigé vers WhatsApp avec les détails de votre réservation. Appuyez simplement sur Envoyer.'
-            : 'You will be redirected to WhatsApp with your reservation details. Just tap Send.'}
-        </p>
-        <button id="waConfirmBtn" style="
-            background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;
-            padding:14px 36px;border-radius:12px;font-size:1rem;font-weight:600;
-            cursor:pointer;transition:all 0.3s ease;font-family:'Poppins',sans-serif;
-            letter-spacing:0.5px;text-transform:uppercase;
-            box-shadow: 0 4px 20px rgba(37,211,102,0.4);">
-            <i class="fab fa-whatsapp" style="margin-right:8px;"></i>
-            ${isFr ? 'Ouvrir WhatsApp' : 'Open WhatsApp'}
-        </button>
-        <button id="waCancelBtn" style="
-            display:block;margin:16px auto 0;background:none;border:none;
-            color:#b8a99a;font-size:0.85rem;cursor:pointer;font-family:'Poppins',sans-serif;
-            padding:8px 16px;transition:color 0.2s ease;">
-            ${isFr ? 'Annuler' : 'Cancel'}
-        </button>
-    `;
-
-    overlay.appendChild(card);
-    document.body.appendChild(overlay);
-
-    // Animate in
-    requestAnimationFrame(() => {
-        overlay.style.opacity = '1';
-        card.style.transform = 'scale(1)';
-        card.style.opacity = '1';
-    });
-
-    // Confirm button
-    document.getElementById('waConfirmBtn').addEventListener('click', () => {
-        closeOverlay();
-        callback();
-        // Reset form after redirect
-        document.getElementById('reservationForm')?.reset();
-    });
-
-    // Cancel button
-    document.getElementById('waCancelBtn').addEventListener('click', closeOverlay);
-
-    // Close on overlay click
-    overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) closeOverlay();
-    });
-
-    // Hover effects
-    const confirmBtn = document.getElementById('waConfirmBtn');
-    confirmBtn.addEventListener('mouseenter', () => {
-        confirmBtn.style.transform = 'translateY(-2px)';
-        confirmBtn.style.boxShadow = '0 8px 30px rgba(37,211,102,0.6)';
-    });
-    confirmBtn.addEventListener('mouseleave', () => {
-        confirmBtn.style.transform = 'translateY(0)';
-        confirmBtn.style.boxShadow = '0 4px 20px rgba(37,211,102,0.4)';
-    });
-
-    function closeOverlay() {
-        overlay.style.opacity = '0';
-        card.style.transform = 'scale(0.8)';
-        card.style.opacity = '0';
-        setTimeout(() => overlay.remove(), 300);
+    if (method === 'whatsapp') {
+        btnWA?.classList.add('active');
+        btnEmail?.classList.remove('active');
+        if (icon) { icon.className = 'fab fa-whatsapp'; icon.style.marginRight = '8px'; }
+        if (text) text.textContent = isFr ? 'Réserver via WhatsApp' : 'Book via WhatsApp';
+        if (emailInput) emailInput.required = false;
+    } else {
+        btnEmail?.classList.add('active');
+        btnWA?.classList.remove('active');
+        if (icon) { icon.className = 'fas fa-envelope'; icon.style.marginRight = '8px'; }
+        if (text) text.textContent = isFr ? 'Réserver par Email' : 'Book via Email';
+        if (emailInput) emailInput.required = true;
     }
 }
+
+// ================================
+// Unified Reservation Handler
+// ================================
+function handleReservation(event) {
+    event.preventDefault();
+    if (activeReservationMethod === 'email') {
+        handleReservationEmail(event);
+    } else {
+        handleReservationWhatsApp(event);
+    }
+}
+
+// ================================
+// Email Reservation (EmailJS)
+// ================================
+function handleReservationEmail(event) {
+    const consent = document.getElementById('resConsent');
+    const lang = document.documentElement.lang || 'fr';
+    const isFr = lang === 'fr';
+
+    if (consent && !consent.checked) {
+        alert(isFr ? "Veuillez accepter la politique de confidentialité." : "Please accept the privacy policy.");
+        return;
+    }
+
+    const name    = document.getElementById('resName')?.value.trim() || '';
+    const email   = document.getElementById('resEmail')?.value.trim() || '';
+    const phone   = document.getElementById('resPhone')?.value.trim() || '';
+    const date    = document.getElementById('resDate')?.value || '';
+    const time    = document.getElementById('resTime')?.value || '';
+    const guestsEl = document.getElementById('resGuests');
+    const guests  = guestsEl ? guestsEl.options[guestsEl.selectedIndex].text : '';
+    const message = document.getElementById('resMessage')?.value.trim() || '';
+
+    if (!email) {
+        alert(isFr ? "Veuillez saisir votre adresse email." : "Please enter your email address.");
+        return;
+    }
+
+    // Format date
+    let formattedDate = date;
+    if (date) {
+        const d = new Date(date + 'T00:00:00');
+        formattedDate = d.toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    }
+
+    // Format time
+    let formattedTime = time;
+    if (time) {
+        const [h, m] = time.split(':');
+        formattedTime = `${h}h${m}`;
+    }
+
+    // Disable submit button during send
+    const submitBtn = document.getElementById('resSubmitBtn');
+    const submitText = document.getElementById('resSubmitText');
+    const submitIcon = document.getElementById('resSubmitIcon');
+    if (submitBtn) submitBtn.disabled = true;
+    if (submitText) submitText.textContent = isFr ? 'Envoi en cours...' : 'Sending...';
+    if (submitIcon) submitIcon.className = 'fas fa-spinner fa-spin';
+
+    const templateParams = {
+        customer_name:    name,
+        customer_email:   email,
+        customer_phone:   phone || (isFr ? 'Non renseigné' : 'Not provided'),
+        booking_date:     formattedDate,
+        booking_time:     formattedTime,
+        guests:           guests,
+        special_requests: message || (isFr ? 'Aucune' : 'None'),
+        restaurant_email: RESTAURANT_EMAIL,
+        to_email:         email,
+    };
+
+    // Send notification to restaurant + confirmation to customer in parallel
+    Promise.all([
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_RESTAURANT, { ...templateParams, to_email: RESTAURANT_EMAIL }),
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_CUSTOMER,   { ...templateParams, to_email: email }),
+    ])
+    .then(() => {
+        showEmailSuccessOverlay(name, email, isFr);
+        document.getElementById('reservationForm')?.reset();
+        switchReservationMethod('whatsapp'); // Reset toggle
+    })
+    .catch((err) => {
+        console.error('EmailJS error:', err);
+        showEmailErrorOverlay(isFr);
+    })
+    .finally(() => {
+        if (submitBtn) submitBtn.disabled = false;
+        if (submitText) submitText.textContent = isFr ? 'Réserver par Email' : 'Book via Email';
+        if (submitIcon) submitIcon.className = 'fas fa-envelope';
+    });
+}
+
+function showEmailSuccessOverlay(name, email, isFr) {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = `
+        position:fixed;inset:0;z-index:9999;
+        background:rgba(0,0,0,0.75);backdrop-filter:blur(8px);
+        display:flex;align-items:center;justify-content:center;
+        opacity:0;transition:opacity 0.3s ease;
+    `;
+    const card = document.createElement('div');
+    card.style.cssText = `
+        background:linear-gradient(145deg,#1a2a1a,#1a1a1a);
+        border:1px solid rgba(34,197,94,0.3);border-radius:20px;
+        padding:48px 40px;text-align:center;max-width:440px;width:90%;
+        transform:scale(0.85);opacity:0;
+        transition:all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+        box-shadow:0 24px 80px rgba(0,0,0,0.5),0 0 40px rgba(34,197,94,0.1);
+    `;
+    card.innerHTML = `
+        <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#22c55e,#15803d);
+            display:flex;align-items:center;justify-content:center;margin:0 auto 24px;
+            box-shadow:0 8px 32px rgba(34,197,94,0.35);">
+            <i class="fas fa-check" style="font-size:2rem;color:#fff;"></i>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#f5f0e8;margin-bottom:12px;">
+            ${isFr ? 'Réservation envoyée !' : 'Reservation Sent!'}
+        </h3>
+        <p style="color:#b8a99a;font-size:0.95rem;line-height:1.7;margin-bottom:8px;">
+            ${isFr
+                ? `Merci <strong style="color:#f5f0e8;">${name}</strong> ! Votre demande a bien été envoyée au restaurant.`
+                : `Thank you <strong style="color:#f5f0e8;">${name}</strong>! Your request has been sent to the restaurant.`}
+        </p>
+        <p style="color:#b8a99a;font-size:0.88rem;line-height:1.6;margin-bottom:28px;">
+            ${isFr
+                ? `Un email de confirmation a été envoyé à <strong style="color:var(--color-gold);">${email}</strong>.<br>Le restaurant vous contactera pour confirmer.`
+                : `A confirmation email was sent to <strong style="color:var(--color-gold);">${email}</strong>.<br>The restaurant will contact you to confirm.`}
+        </p>
+        <button id="emailSuccessClose" style="
+            background:linear-gradient(135deg,#22c55e,#15803d);color:#fff;border:none;
+            padding:14px 36px;border-radius:12px;font-size:1rem;font-weight:600;
+            cursor:pointer;font-family:'Poppins',sans-serif;letter-spacing:0.5px;
+            box-shadow:0 4px 20px rgba(34,197,94,0.4);transition:all 0.3s ease;">
+            ${isFr ? 'Parfait, merci !' : 'Great, thank you!'}
+        </button>
+    `;
+    overlay.appendChild(card);
+    document.body.appendChild(overlay);
+    requestAnimationFrame(() => { overlay.style.opacity='1'; card.style.transform='scale(1)'; card.style.opacity='1'; });
+    const close = () => { overlay.style.opacity='0'; card.style.transform='scale(0.85)'; setTimeout(()=>overlay.remove(),300); };
+    document.getElementById('emailSuccessClose')?.addEventListener('click', close);
+    overlay.addEventListener('click', e => { if(e.target===overlay) close(); });
+}
+
+function showEmailErrorOverlay(isFr) {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = `
+        position:fixed;inset:0;z-index:9999;
+        background:rgba(0,0,0,0.75);backdrop-filter:blur(8px);
+        display:flex;align-items:center;justify-content:center;
+        opacity:0;transition:opacity 0.3s ease;
+    `;
+    const card = document.createElement('div');
+    card.style.cssText = `
+        background:linear-gradient(145deg,#2a1a1a,#1a1a1a);
+        border:1px solid rgba(239,68,68,0.3);border-radius:20px;
+        padding:48px 40px;text-align:center;max-width:440px;width:90%;
+        transform:scale(0.85);opacity:0;
+        transition:all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+        box-shadow:0 24px 80px rgba(0,0,0,0.5);
+    `;
+    card.innerHTML = `
+        <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#ef4444,#b91c1c);
+            display:flex;align-items:center;justify-content:center;margin:0 auto 24px;
+            box-shadow:0 8px 32px rgba(239,68,68,0.35);">
+            <i class="fas fa-exclamation-triangle" style="font-size:2rem;color:#fff;"></i>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#f5f0e8;margin-bottom:12px;">
+            ${isFr ? 'Erreur d\'envoi' : 'Sending Error'}
+        </h3>
+        <p style="color:#b8a99a;font-size:0.95rem;line-height:1.7;margin-bottom:28px;">
+            ${isFr
+                ? 'Une erreur s\'est produite. Veuillez réessayer ou nous contacter par téléphone au <strong style="color:var(--color-gold);">05 61 99 21 03</strong>.'
+                : 'An error occurred. Please try again or call us at <strong style="color:var(--color-gold);">05 61 99 21 03</strong>.'}
+        </p>
+        <button id="emailErrorClose" style="
+            background:linear-gradient(135deg,#d4a843,#c4983d);color:#fff;border:none;
+            padding:14px 36px;border-radius:12px;font-size:1rem;font-weight:600;
+            cursor:pointer;font-family:'Poppins',sans-serif;letter-spacing:0.5px;
+            box-shadow:0 4px 20px rgba(212,168,67,0.4);transition:all 0.3s ease;">
+            ${isFr ? 'Réessayer' : 'Try Again'}
+        </button>
+    `;
+    overlay.appendChild(card);
+    document.body.appendChild(overlay);
+    requestAnimationFrame(() => { overlay.style.opacity='1'; card.style.transform='scale(1)'; card.style.opacity='1'; });
+    const close = () => { overlay.style.opacity='0'; card.style.transform='scale(0.85)'; setTimeout(()=>overlay.remove(),300); };
+    document.getElementById('emailErrorClose')?.addEventListener('click', close);
+    overlay.addEventListener('click', e => { if(e.target===overlay) close(); });
+}
+
 
 // ================================
 // Opening Hours Status Banner
@@ -491,12 +643,13 @@ function initOpeningHours() {
         let isOpen = false;
         let nextOpenSlot = null;
 
-        // Check if currently within any opening slot
+        let currentOpeningSlot = null;
         for (const slot of SCHEDULE) {
             const openMin = toMinutes(slot.open.h, slot.open.m);
             const closeMin = toMinutes(slot.close.h, slot.close.m);
             if (currentMinutes >= openMin && currentMinutes < closeMin) {
                 isOpen = true;
+                currentOpeningSlot = slot;
                 break;
             }
         }

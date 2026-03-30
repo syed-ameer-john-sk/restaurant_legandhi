@@ -9,6 +9,8 @@
         content="Réservez votre table au restaurant Le Gandhi à Toulouse. Contactez-nous au 05 61 99 21 03. 39 Rue de l'Industrie, 31000 Toulouse.">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="translations.js"></script>
     <script src="i18n.js"></script>
 </head>
@@ -38,10 +40,8 @@
                 </ul>
                 <div class="nav-right">
                     <div class="nav-social">
-                        <a href="https://www.instagram.com/legandhi.toulouse/" target="_blank" rel="noopener"
+                        <a href="https://www.instagram.com/gandhi_toulouse?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener"
                             aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.tiktok.com/@resutaurantlegandhi" target="_blank" rel="noopener"
-                            aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                         <a href="https://www.facebook.com/legandhi.toulouse/" target="_blank" rel="noopener"
                             aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     </div>
@@ -92,9 +92,22 @@
 
                 <!-- Reservation Form -->
                 <div class="reveal">
-                    <h2 style="font-size:1.6rem; color:var(--color-cream); margin-bottom:28px;"
+                    <h2 style="font-size:1.6rem; color:var(--color-cream); margin-bottom:20px;"
                         data-i18n="contactFormTitle">Réserver une Table</h2>
-                    <form id="reservationForm" onsubmit="handleReservationWhatsApp(event)">
+
+                    <!-- Reservation Method Toggle -->
+                    <div class="res-method-toggle" id="resMethodToggle">
+                        <button type="button" class="res-method-btn active" id="btnMethodWA">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>WhatsApp</span>
+                        </button>
+                        <button type="button" class="res-method-btn" id="btnMethodEmail">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email</span>
+                        </button>
+                    </div>
+
+                    <form id="reservationForm" onsubmit="handleReservation(event)">
                         <div class="form-group">
                             <label class="form-label" data-i18n="contactFormName">Nom complet</label>
                             <input type="text" id="resName" class="form-input" required>
@@ -102,7 +115,7 @@
                         <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
                             <div class="form-group">
                                 <label class="form-label" data-i18n="contactFormEmail">Email</label>
-                                <input type="email" id="resEmail" class="form-input" required>
+                                <input type="email" id="resEmail" class="form-input">
                             </div>
                             <div class="form-group">
                                 <label class="form-label" data-i18n="contactFormPhone">Téléphone</label>
@@ -134,14 +147,15 @@
                             <label class="form-label" data-i18n="contactFormMessage">Demandes spéciales</label>
                             <textarea id="resMessage" class="form-textarea" data-i18n-placeholder="contactFormMessagePlaceholder" placeholder="Allergies, anniversaire..."></textarea>
                         </div>
-                                                <div class="form-group full-width" style="display:flex; align-items:flex-start; gap:12px; margin-top:10px; margin-bottom:20px;">
+                        <div class="form-group full-width" style="display:flex; align-items:flex-start; gap:12px; margin-top:10px; margin-bottom:20px;">
                             <input type="checkbox" id="resConsent" style="margin-top:5px; width:18px; height:18px; accent-color:var(--color-gold);" required>
                             <label for="resConsent" style="font-size:0.85rem; color:#b8a99a; cursor:pointer; line-height:1.5;" data-i18n="contactFormConsent">
                                 J'accepte que mes données soient collectées pour le traitement de ma demande (voir notre <a href='privacy-policy.html' target='_blank' style='color:var(--color-gold);'>Politique de Confidentialité</a>).
                             </label>
                         </div>
-                        <button type="submit" id="resSubmitBtn" class="btn btn-primary" data-i18n="contactFormSubmit">
-                            <i class="fab fa-whatsapp" style="margin-right:8px;"></i>Réserver via WhatsApp
+                        <button type="submit" id="resSubmitBtn" class="btn btn-primary">
+                            <i class="fab fa-whatsapp" id="resSubmitIcon" style="margin-right:8px;"></i>
+                            <span id="resSubmitText">Réserver via WhatsApp</span>
                         </button>
                     </form>
                 </div>
@@ -177,7 +191,7 @@
                             <div class="location-icon"><i class="fas fa-envelope"></i></div>
                             <div class="location-text">
                                 <h4>Email</h4>
-                                <p>contact@legandhi-toulouse.fr</p>
+                                <p>resturantlegandhi@orangr.fr</p>
                             </div>
                         </div>
                     </div>
@@ -185,13 +199,10 @@
                     <!-- Social -->
                     <div style="margin-bottom:32px;">
                         <div class="footer-social" style="gap:16px;">
-                            <a href="https://www.instagram.com/legandhi.toulouse/" target="_blank" rel="noopener"
+                            <a href="https://www.instagram.com/gandhi_toulouse?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener"
                                 style="width:48px;height:48px;font-size:1.2rem;"><i class="fab fa-instagram"></i></a>
-                            <a href="https://www.tiktok.com/@resutaurantlegandhi" target="_blank" rel="noopener"
-                                style="width:48px;height:48px;font-size:1.2rem;" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                             <a href="https://www.facebook.com/legandhi.toulouse/" target="_blank" rel="noopener"
                                 style="width:48px;height:48px;font-size:1.2rem;"><i class="fab fa-facebook-f"></i></a>
-                            
                         </div>
                     </div>
 
@@ -215,13 +226,10 @@
                     <a href="index.html" class="nav-logo"><img src="Logo_transparent.png" alt="Le Gandhi"></a>
                     <p data-i18n="footerDesc">L'essence authentique de l'héritage indien à Toulouse.</p>
                     <div class="footer-social">
-                        <a href="https://www.instagram.com/legandhi.toulouse/" target="_blank" rel="noopener"><i
+                        <a href="https://www.instagram.com/gandhi_toulouse?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener"><i
                                 class="fab fa-instagram"></i></a>
-                        <a href="https://www.tiktok.com/@resutaurantlegandhi" target="_blank" rel="noopener"
-                            aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                         <a href="https://www.facebook.com/legandhi.toulouse/" target="_blank" rel="noopener"><i
                                 class="fab fa-facebook-f"></i></a>
-                        
                     </div>
                 </div>
                 <div class="footer-col">
@@ -237,7 +245,8 @@
                     <h3 data-i18n="footerContact">Contact</h3>
                     <p>39 Rue de l'Industrie, 31000 Toulouse</p>
                     <p>05 61 99 21 03</p>
-                    <p>contact@legandhi-toulouse.fr</p>
+                    <p data-i18n="footerHoursVal">Lun - Dim: 12h00-14h30 / 19h00-23h00</p>
+                    <p>resturantlegandhi@orangr.fr</p>
                 </div>
                 <div class="footer-col">
                     <h3 data-i18n="footerNewsletter">Newsletter</h3>
@@ -253,7 +262,10 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p data-i18n="footerCopyright">© 2026 Le Gandhi Toulouse. Tous droits réservés.</p>
+                <div class="footer-bottom-info">
+                    <p data-i18n="footerCopyright">© 2026 Le Gandhi Toulouse. Tous droits réservés.</p>
+                    <p class="footer-credit">Designed by Rohith Thinakaran</p>
+                </div>
                 <div class="footer-legal">
                     <a href="legal-notice.html" data-i18n="footerLegal">Mentions Légales</a>
                     <a href="privacy-policy.html" data-i18n="footerPrivacy">Confidentialité</a>
@@ -268,11 +280,11 @@
         <a href="https://wa.me/33643014677" class="fab-btn fab-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>
-    <a href="https://www.tiktok.com/@resutaurantlegandhi" class="fab-btn fab-tiktok" target="_blank" rel="noopener" aria-label="TikTok">
-        <i class="fab fa-tiktok"></i>
-    </a>
         <a href="tel:+33780738678" class="fab-btn fab-call" aria-label="Appeler">
             <i class="fas fa-phone-alt"></i>
+        </a>
+        <a href="https://www.instagram.com/gandhi_toulouse?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="fab-btn fab-instagram" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
         </a>
     </div>
 

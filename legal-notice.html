@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="translations.js"></script>
     <script src="i18n.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -70,7 +71,10 @@
 
     <footer class="footer" style="text-align: center; padding: 60px 0; background: #0a0707; border-top: 1px solid rgba(212,168,67,0.1);">
         <div class="container">
-            <p data-i18n="footerCopyright">© 2026 Le Gandhi Toulouse. Tous droits réservés.</p>
+            <div class="footer-bottom-info">
+                <p data-i18n="footerCopyright">© 2026 Le Gandhi Toulouse. Tous droits réservés.</p>
+                <p class="footer-credit">Designed by Rohith Thinakaran</p>
+            </div>
             <div class="footer-legal" style="margin-top: 20px;">
               <a href="legal-notice.html" data-i18n="footerLegal">Mentions Légales</a>
               <a href="privacy-policy.html" data-i18n="footerPrivacy">Confidentialité</a>

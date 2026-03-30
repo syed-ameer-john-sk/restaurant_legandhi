@@ -24,7 +24,11 @@ function applyTranslations(lang) {
   document.documentElement.setAttribute("dir", "ltr");
 
   // Persist across sessions
-  localStorage.setItem("site_lang", lang);
+  try {
+    localStorage.setItem("site_lang", lang);
+  } catch (e) {
+    // Silently ignore if localStorage is blocked
+  }
 
   // Update currentLang display button text
   const currentLangEl = document.getElementById("currentLang");
@@ -44,22 +48,27 @@ function applyTranslations(lang) {
 // Initialise on DOMContentLoaded
 // ================================
 document.addEventListener("DOMContentLoaded", () => {
-  // Use saved language, default to French
-  const saved = localStorage.getItem("site_lang") || "fr";
-  applyTranslations(saved);
-
-  // Use event delegation on the document body so clicks fire
-  // even if the dropdown is closing simultaneously
-  document.body.addEventListener("click", (e) => {
-    const btn = e.target.closest("[data-lang]");
-    if (!btn) return;
-    e.preventDefault();
-    e.stopPropagation();
-    const lang = btn.getAttribute("data-lang");
-    if (lang) {
-      applyTranslations(lang);
-      // Close the dropdown
-      document.querySelectorAll(".lang-dropdown").forEach(d => d.classList.remove("active"));
+    // Use saved language, default to French
+    let saved = "fr";
+    try {
+        saved = localStorage.getItem("site_lang") || "fr";
+    } catch (e) {
+        console.warn('[i18n] localStorage is blocked on this protocol. Using default "fr".');
     }
-  });
+    applyTranslations(saved);
+
+    // Use event delegation on the document body so clicks fire
+    // even if the dropdown is closing simultaneously
+    document.body.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-lang]");
+        if (!btn) return;
+        e.preventDefault();
+        e.stopPropagation();
+        const lang = btn.getAttribute("data-lang");
+        if (lang) {
+            applyTranslations(lang);
+            // Close the dropdown
+            document.querySelectorAll(".lang-dropdown").forEach(d => d.classList.remove("active"));
+        }
+    });
 });

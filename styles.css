@@ -1013,10 +1013,12 @@ h5 {
   display: flex;
   gap: 8px;
   margin-top: 16px;
+  flex-wrap: wrap;
 }
 
 .newsletter-input {
   flex: 1;
+  min-width: 200px;
   padding: 12px 16px;
   border: 1px solid rgba(212, 168, 67, 0.2);
   border-radius: var(--radius-sm);
@@ -1046,9 +1048,23 @@ h5 {
   gap: 16px;
 }
 
+.footer-bottom-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .footer-bottom p {
   color: var(--color-text-muted);
   font-size: 0.85rem;
+}
+
+.footer-credit {
+  color: var(--color-gold);
+  font-size: 0.8rem;
+  font-weight: 500;
+  opacity: 0.8;
+  letter-spacing: 0.5px;
 }
 
 .footer-legal {
@@ -1172,6 +1188,7 @@ h5 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
+  grid-auto-flow: dense;
 }
 
 .gallery-item {
@@ -1687,7 +1704,7 @@ h5 {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 20px;
+  padding: 12px 20px;
   background: rgba(26, 26, 26, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -1748,17 +1765,27 @@ h5 {
 .opening-hours-text {
   font-family: var(--font-body);
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.5px;
   color: var(--color-cream);
 }
 
+.opening-hours-banner.is-open {
+  background: rgba(26, 26, 26, 0.95);
+  border-bottom-color: rgba(212, 168, 67, 0.2);
+}
+
 .opening-hours-banner.is-open .opening-hours-text {
-  color: #86efac;
+  color: #4ade80; /* Light green */
+}
+
+.opening-hours-banner.is-closed {
+  background: rgba(26, 26, 26, 0.95);
+  border-bottom-color: rgba(212, 168, 67, 0.2);
 }
 
 .opening-hours-banner.is-closed .opening-hours-text {
-  color: #fca5a5;
+  color: #f87171; /* Light red */
 }
 
 .opening-hours-close {
@@ -1784,7 +1811,7 @@ h5 {
 
 /* Push header down when banner is visible */
 .opening-hours-banner.visible ~ .header {
-  top: 40px;
+  top: 48px;
 }
 
 @media (max-width: 768px) {
@@ -1855,12 +1882,12 @@ h5 {
   box-shadow: 0 8px 32px rgba(212, 168, 67, 0.5);
 }
 
-.fab-tiktok {
-  background: linear-gradient(135deg, #010101, #2d2d2d);
+.fab-instagram {
+  background: linear-gradient(135deg, #F58529, #FEDA77, #DD2A7B, #8134AF, #515BD4);
 }
 
-.fab-tiktok:hover {
-  box-shadow: 0 8px 32px rgba(105, 201, 208, 0.5);
+.fab-instagram:hover {
+  box-shadow: 0 8px 32px rgba(225, 48, 108, 0.5);
 }
 
 .fab-tiktok svg {
@@ -2178,5 +2205,100 @@ html, body {
 @media (max-width: 768px) {
   .specialty-card.featured {
     grid-column: 1 / -1;
+  }
+}
+
+/* ================================
+   RESERVATION METHOD TOGGLE
+   ================================ */
+.res-method-toggle {
+  display: flex;
+  gap: 0;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(212, 168, 67, 0.2);
+  border-radius: 14px;
+  padding: 5px;
+  margin-bottom: 28px;
+  width: 100%;
+  position: relative;
+}
+
+.res-method-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 20px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  z-index: 1;
+}
+
+.res-method-btn i {
+  font-size: 1.05rem;
+  transition: all 0.3s ease;
+}
+
+.res-method-btn:hover:not(.active) {
+  color: var(--color-cream);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.res-method-btn.active {
+  background: linear-gradient(135deg, var(--color-dark-red), var(--color-deep-red));
+  color: var(--color-cream);
+  box-shadow: 0 4px 18px rgba(138, 0, 0, 0.45);
+}
+
+/* WhatsApp active = green */
+#btnMethodWA.active {
+  background: linear-gradient(135deg, #1da851, #128C7E);
+  box-shadow: 0 4px 18px rgba(29, 168, 81, 0.4);
+}
+
+#btnMethodWA.active i {
+  color: #fff;
+}
+
+/* Email active = red-gold */
+#btnMethodEmail.active {
+  background: linear-gradient(135deg, var(--color-dark-red), var(--color-deep-red));
+  box-shadow: 0 4px 18px rgba(138, 0, 0, 0.45);
+}
+
+#btnMethodEmail.active i {
+  color: var(--color-gold-light);
+}
+
+/* Submit button disabled state */
+#resSubmitBtn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+@media (max-width: 480px) {
+  .res-method-btn {
+    font-size: 0.82rem;
+    padding: 11px 12px;
+    gap: 7px;
+  }
+
+  .res-method-btn span {
+    display: none;
+  }
+
+  .res-method-btn i {
+    font-size: 1.3rem;
   }
 }
