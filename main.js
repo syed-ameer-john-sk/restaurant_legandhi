@@ -295,7 +295,7 @@ function removeLogoWhiteBackground() {
 const EMAILJS_SERVICE_ID  = 'service_k13xenc';   // Real Service ID
 const EMAILJS_TEMPLATE_RESTAURANT = 'template_ytw1wzz'; // Restaurant notification
 const EMAILJS_TEMPLATE_CUSTOMER   = 'template_iqtvzkw'; // Customer confirmation
-const RESTAURANT_EMAIL = 'resturantlegandhi@orangr.fr';
+const RESTAURANT_EMAIL = 'restaurantlegandhi@orange.fr';
 
 // ================================
 // WhatsApp Reservation Redirect
