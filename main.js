@@ -376,12 +376,6 @@ function initReservationToggle() {
 
     btnWA.addEventListener('click', () => switchReservationMethod('whatsapp'));
     btnEmail.addEventListener('click', () => switchReservationMethod('email'));
-
-    // Keep button text as "Submit" whenever language changes
-    document.addEventListener('languageChanged', () => {
-        const text = document.getElementById('resSubmitText');
-        if (text) text.textContent = 'Submit';
-    });
 }
 
 function switchReservationMethod(method) {
@@ -398,13 +392,11 @@ function switchReservationMethod(method) {
         btnWA?.classList.add('active');
         btnEmail?.classList.remove('active');
         if (icon) { icon.className = 'fab fa-whatsapp'; icon.style.marginRight = '8px'; }
-        if (text) text.textContent = 'Submit';
         if (emailInput) emailInput.required = false;
     } else {
         btnEmail?.classList.add('active');
         btnWA?.classList.remove('active');
         if (icon) { icon.className = 'fas fa-envelope'; icon.style.marginRight = '8px'; }
-        if (text) text.textContent = 'Submit';
         if (emailInput) emailInput.required = true;
     }
 }
@@ -498,7 +490,6 @@ function handleReservationEmail(event) {
     })
     .finally(() => {
         if (submitBtn) submitBtn.disabled = false;
-        if (submitText) submitText.textContent = 'Submit';
         if (submitIcon) submitIcon.className = 'fas fa-envelope';
     });
 }
