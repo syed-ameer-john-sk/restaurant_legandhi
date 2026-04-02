@@ -376,6 +376,12 @@ function initReservationToggle() {
 
     btnWA.addEventListener('click', () => switchReservationMethod('whatsapp'));
     btnEmail.addEventListener('click', () => switchReservationMethod('email'));
+
+    // Keep button text as "Submit" whenever language changes
+    document.addEventListener('languageChanged', () => {
+        const text = document.getElementById('resSubmitText');
+        if (text) text.textContent = 'Submit';
+    });
 }
 
 function switchReservationMethod(method) {
