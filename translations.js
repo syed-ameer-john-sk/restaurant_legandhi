@@ -530,7 +530,7 @@ const translations = {
     item_thalis_thali_végétarien_desc: "Vegetable curry",
     item_thalis_thali_végétarien_name: "Vegetarian Thali",
     badgeNew: "New",
-    specChickenShawarma: "Chicken Shawarma",
+    specChickenShawarma: "Chicken Tikka Masala Role",
     specChickenShawarmaDesc: "Street food specialty: sautéed chicken strips with vegetables and Indian spices.",
     aboutMissionLabel: "Our Mission",
     aboutMissionP1: "Founded with a simple yet ambitious vision: to offer Toulouse a truly authentic Indian culinary experience. Le Gandhi is committed to using only the finest ingredients and traditional cooking techniques.",
